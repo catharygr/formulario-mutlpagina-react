@@ -113,6 +113,7 @@ meter {
   /* Colores */
   --color-white: #ffffff;
   --color-acentado: #9900ff;
+  --color-green: #66ff00;
 
   /* Tipografía */
   --font-family: "system-ui", sans-serif;
@@ -139,20 +140,30 @@ body {
 }
 
 /* Componente Header */
-.header-container {
+
+header {
+  display: flex;
+  justify-content: center;
   background-color: var(--color-acentado);
   color: var(--color-white);
-  padding: 1rem;
+}
+
+.header-container {
+  padding: 1.5rem 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-basis: 87rem;
 }
 
 .header-logo {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   align-items: center;
   gap: 1rem;
   font-size: var(--ff-600);
+}
+
+.header-menu {
+  display: flex;
+  align-items: center;
 }
