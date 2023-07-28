@@ -4,7 +4,7 @@ import { useToggle } from "../utilidades/useToggle";
 import Drawer from "./Drawer";
 
 export default function Header() {
-  const [isMenuAbierto, isSetMenuAbierto] = useToggle(false);
+  const [esMenuAbierto, esSetMenuAbierto] = useToggle(false);
   return (
     <header>
       <div className="header-container">
@@ -12,12 +12,12 @@ export default function Header() {
           <Umbrella size={30} color="var(--color-green)" strokeWidth={3} />
           <p>Weather App</p>
         </div>
-        <div className="header-menu">
+        <nav className="header-menu">
           <button className="menu-btn">
             <Menu size={30} />
           </button>
-          {isMenuAbierto && (
-            <Drawer>
+          {esMenuAbierto && (
+            <Drawer handleCerrarMenu={esSetMenuAbierto}>
               <ul>
                 <li>
                   <a href="">Home</a>
@@ -34,7 +34,7 @@ export default function Header() {
               </ul>
             </Drawer>
           )}
-        </div>
+        </nav>
       </div>
     </header>
   );
