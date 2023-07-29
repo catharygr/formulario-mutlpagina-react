@@ -114,6 +114,7 @@ meter {
   --color-white: #ffffff;
   --color-acentado: #9900ff;
   --color-green: #66ff00;
+  --color-black: #222;
 
   /* Tipografía */
   --font-family: "system-ui", sans-serif;
@@ -139,7 +140,9 @@ body {
   font-size: var(--ff-400);
 }
 
-/* Componente Header */
+/* ********************** */
+/* Header componente      */
+/* ********************** */
 
 header {
   display: flex;
@@ -175,4 +178,70 @@ header {
 
 .menu-btn:hover {
   scale: 1.1;
+}
+
+.nav-lista {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  gap: 1rem;
+}
+
+.nav-lista a:hover {
+  color: var(--color-acentado);
+}
+
+/* ********************** */
+/* Drawer componente      */
+/* ********************** */
+
+@keyframes deslizar {
+  from {
+    transform: translateX(100%);
+  }
+}
+@keyframes transparencia {
+  from {
+    opacity: 0;
+  }
+}
+
+.drawer-container {
+  position: fixed;
+  inset: 0;
+  padding: 16px;
+}
+.drawer-fondo {
+  position: absolute;
+  inset: 0;
+  background: hsla(288, 100%, 30%, 0.75);
+  backdrop-filter: blur(3px);
+  animation: transparencia 850ms cubic-bezier(0.14, 0.78, 0.36, 1);
+}
+.drawer-contenido {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  width: 50%;
+  max-width: 300px;
+  min-width: 200px;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.cerrar-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px;
+  cursor: pointer;
+  background-color: var(--color-acentado);
+  color: var(--color-white);
+  border: none;
+  border-radius: 4px;
 }

@@ -13,12 +13,12 @@ export default function Header() {
           <p>Weather App</p>
         </div>
         <nav className="header-menu">
-          <button className="menu-btn">
+          <button onClick={esSetMenuAbierto} className="menu-btn">
             <Menu size={30} />
           </button>
           {esMenuAbierto && (
             <Drawer handleCerrarMenu={esSetMenuAbierto}>
-              <ul>
+              <ul className="nav-lista">
                 <li>
                   <a href="">Home</a>
                 </li>
