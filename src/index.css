@@ -140,6 +140,12 @@ body {
   font-size: var(--ff-400);
 }
 
+:focus-visible {
+  outline: 2px solid var(--color-acentado);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
 /* ********************** */
 /* Header componente      */
 /* ********************** */
