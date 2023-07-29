@@ -9,12 +9,12 @@ export default function Header() {
     <header>
       <div className="header-container">
         <div className="header-logo">
-          <Umbrella size={30} color="var(--color-green)" strokeWidth={3} />
+          <Umbrella size={25} color="var(--color-green)" strokeWidth={3} />
           <p>Weather App</p>
         </div>
         <nav className="header-menu">
           <button onClick={esSetMenuAbierto} className="menu-btn">
-            <Menu size={30} />
+            <Menu size={25} />
           </button>
           {esMenuAbierto && (
             <Drawer handleCerrarMenu={esSetMenuAbierto}>

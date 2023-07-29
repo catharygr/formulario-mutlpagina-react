@@ -152,7 +152,7 @@ header {
 }
 
 .header-container {
-  padding: 1.5rem 2rem;
+  padding: 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -163,7 +163,7 @@ header {
   display: flex;
   align-items: center;
   gap: 1rem;
-  font-size: var(--ff-600);
+  font-size: var(--ff-500);
 }
 
 .header-menu {
@@ -189,6 +189,15 @@ header {
 
 .nav-lista a:hover {
   color: var(--color-acentado);
+}
+
+@media (min-width: 40rem) {
+  .header-container {
+    padding: 1.5rem 2rem;
+  }
+  .header-logo {
+    font-size: var(--ff-600);
+  }
 }
 
 /* ********************** */
