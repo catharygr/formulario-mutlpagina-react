@@ -10,7 +10,7 @@ export default function Header() {
       <div className="header-container">
         <div className="header-logo">
           <Umbrella size={25} color="var(--color-green)" strokeWidth={3} />
-          <p>Weather App</p>
+          <span>Weather App</span>
         </div>
         <nav className="header-menu">
           <button onClick={esSetMenuAbierto} className="menu-btn">
