@@ -117,6 +117,7 @@ meter {
   --color-black: #222;
   --color-purple: #210036;
   --color-orange: #ec8e00;
+  --color-shadow: #554e83;
 
   /* Tipografía */
   --font-family: "system-ui", sans-serif;
@@ -294,7 +295,8 @@ header {
   font-size: var(--ff-900);
   color: var(--color-orange);
   text-align: right;
-  text-shadow: 5px 5px 0px #554e83;
+  text-shadow: 5px 5px 0px var(--color-shadow);
+  line-height: 0.9;
 }
 
 .ofertas-trabajo-lista {
@@ -314,6 +316,7 @@ header {
   color: var(--color-white);
   padding: 2rem;
   border-radius: 0.5rem;
+  box-shadow: 5px 5px 0px var(--color-shadow);
 }
 
 .ofertas-trabajo-tarjeta :last-child {
