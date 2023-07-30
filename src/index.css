@@ -133,11 +133,17 @@ meter {
 
 /* Clases útiles */
 body {
-  background-image: url("/assets/imagenes/body-background.svg");
-  background-repeat: repeat-y;
-  background-size: cover;
-  font-family: var(--font-family);
-  font-size: var(--ff-400);
+  background-color: var(--color-black);
+}
+
+@media (min-width: 40rem) {
+  body {
+    background-image: url("/assets/imagenes/body-background.svg");
+    background-repeat: repeat-y;
+    background-size: cover;
+    font-family: var(--font-family);
+    font-size: var(--ff-400);
+  }
 }
 
 :focus-visible {
