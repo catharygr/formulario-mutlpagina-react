@@ -396,3 +396,13 @@ header {
 .ofertas-trabajo-tarjeta-btn:hover {
   scale: 1.05;
 }
+
+/* ***************************/
+/* Footer componente         */
+/* ***************************/
+
+.footer {
+  background-color: var(--color-black);
+  color: var(--color-white);
+  padding: 2rem 0;
+}
