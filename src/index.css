@@ -137,6 +137,8 @@ meter {
 /* Clases útiles */
 body {
   background-color: var(--color-black);
+  font-family: var(--font-family);
+  font-size: var(--ff-400);
 }
 
 @media (min-width: 40rem) {
@@ -144,8 +146,6 @@ body {
     background-image: url("/assets/imagenes/body-background.svg");
     background-repeat: repeat-y;
     background-size: cover;
-    font-family: var(--font-family);
-    font-size: var(--ff-400);
   }
 }
 
@@ -287,6 +287,7 @@ header {
 .ofertas-trabajo-container {
   align-self: center;
   margin: 3rem 3vw;
+  width: 90vw;
   max-width: 87rem;
 }
 
@@ -305,12 +306,16 @@ header {
   gap: 2rem;
   margin-block: 3rem;
 }
+.container-querry {
+  display: flex;
+  flex-basis: 340px;
+  flex-grow: 1;
+  container-type: inline-size;
+}
 
 .ofertas-trabajo-tarjeta {
   display: flex;
   flex-direction: column;
-  flex-basis: 340px;
-  flex-grow: 1;
   gap: 1.5rem;
   background-color: var(--color-purple);
   color: var(--color-white);
@@ -319,6 +324,16 @@ header {
   box-shadow: 5px 5px 0px var(--color-shadow);
 }
 
+@container (min-width: 40rem) {
+  .ofertas-trabajo-tarjeta {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-inline: 15vw;
+  }
+  .ofertas-trabajo-tarjeta-btn {
+    margin-left: auto;
+  }
+}
 .ofertas-trabajo-tarjeta :last-child {
   margin-top: auto;
 }
