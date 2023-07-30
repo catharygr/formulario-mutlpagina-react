@@ -14,7 +14,7 @@ export default function TarjetaTrabajo({ oferta }) {
         </div>
         <div className="ofertas-trabajo-tarjeta-salario">
           <p>
-            <span>Salary: </span>
+            <span>Salario: </span>
             {oferta.salary}
           </p>
         </div>
