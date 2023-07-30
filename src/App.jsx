@@ -1,13 +1,13 @@
 import Header from "./componentes/Header";
 import OfertasTrabajo from "./componentes/OfertasTrabajo";
-import Footer from "./componentes/footer";
+import FooterJob from "./componentes/FooterJob";
 
 function App() {
   return (
     <div className="app-container">
       <Header />
       <OfertasTrabajo />
-      <Footer />
+      <FooterJob />
     </div>
   );
 }

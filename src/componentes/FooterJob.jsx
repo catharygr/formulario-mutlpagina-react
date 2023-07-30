@@ -1,4 +1,4 @@
-export default function Footer() {
+export default function FooteJob() {
   return (
     <footer className="footer">
       <div className="footer-info">
