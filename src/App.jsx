@@ -3,10 +3,10 @@ import OfertasTrabajo from "./componentes/OfertasTrabajo";
 
 function App() {
   return (
-    <>
+    <div className="app-container">
       <Header />
       <OfertasTrabajo />
-    </>
+    </div>
   );
 }
 

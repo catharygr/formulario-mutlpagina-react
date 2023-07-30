@@ -152,6 +152,11 @@ body {
   border-radius: 4px;
 }
 
+.app-container {
+  display: flex;
+  flex-direction: column;
+}
+
 /* ********************** */
 /* Header componente      */
 /* ********************** */
@@ -265,4 +270,23 @@ header {
   color: var(--color-white);
   border: none;
   border-radius: 4px;
+}
+
+/* ***************************/
+/* OfertasTrabajo componente */
+/* ***************************/
+
+.ofertas-trabajo-container {
+  margin: 4rem;
+  max-width: 87rem;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.ofertas-trabajo-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-block: 2rem;
 }
