@@ -141,7 +141,7 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-acentado);
+  outline: 2px solid var(--color-green);
   outline-offset: 4px;
   border-radius: 4px;
 }

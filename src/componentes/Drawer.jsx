@@ -3,8 +3,28 @@
 import FocusLock from "react-focus-lock";
 import { RemoveScroll } from "react-remove-scroll";
 import { X as Cerrar } from "react-feather";
+import { useEffect } from "react";
 
 export default function Drawer({ children, handleCerrarMenu }) {
+  useEffect(() => {
+    const elementoEnfocado = document.activeElement;
+    return () => {
+      elementoEnfocado?.focus();
+    };
+  }, []);
+
+  useEffect(() => {
+    function handleEscape(e) {
+      if (e.code === "Escape") {
+        handleCerrarMenu();
+      }
+    }
+    window.addEventListener("keydown", handleEscape);
+    return () => {
+      window.removeEventListener("keydown", handleEscape);
+    };
+  }, [handleCerrarMenu]); // eslint-disable-line react-hooks/exhaustive-deps
+
   return (
     <div className="drawer-container">
       <div className="drawer-fondo" onClick={handleCerrarMenu} />

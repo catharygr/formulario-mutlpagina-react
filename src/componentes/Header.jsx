@@ -20,16 +20,16 @@ export default function Header() {
             <Drawer handleCerrarMenu={esSetMenuAbierto}>
               <ul className="nav-lista">
                 <li>
-                  <a href="">Home</a>
+                  <a href="">Mi portafolio</a>
                 </li>
                 <li>
-                  <a href="">Gallery</a>
+                  <a href="">LinkedIn</a>
                 </li>
                 <li>
-                  <a href="">Photographers</a>
+                  <a href="">Contactos</a>
                 </li>
                 <li>
-                  <a href="">Submit Work</a>
+                  <p></p>
                 </li>
               </ul>
             </Drawer>
