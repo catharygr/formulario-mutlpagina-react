@@ -406,3 +406,35 @@ header {
   color: var(--color-white);
   padding: 2rem 0;
 }
+
+.footer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-container-titulo {
+  font-size: var(--ff-600);
+  font-weight: 600;
+  color: var(--color-orange);
+}
+
+/* ***************************/
+/* Footer componente         */
+/* ***************************/
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+  font-size: 0.8em;
+  background-color: var(--color-shadow);
+  padding: 1rem;
+}
+.footer a {
+  cursor: pointer;
+  color: var(--color-orange);
+}

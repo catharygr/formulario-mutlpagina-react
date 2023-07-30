@@ -1,6 +1,6 @@
 import Header from "./componentes/Header";
 import OfertasTrabajo from "./componentes/OfertasTrabajo";
-import Footer from "./componentes/Footer";
+import Footer from "./componentes/footer";
 
 function App() {
   return (
