@@ -165,6 +165,13 @@ p {
   line-height: 1.6;
 }
 
+html,
+body,
+#root,
+.app-container {
+  height: 100%;
+}
+
 /* ********************** */
 /* Header componente      */
 /* ********************** */
@@ -244,11 +251,13 @@ header {
   position: fixed;
   inset: 0;
   padding: 16px;
+  z-index: 1000;
 }
 .drawer-fondo {
   position: absolute;
   inset: 0;
   background: hsla(288, 100%, 30%, 0.75);
+  -webkit-backdrop-filter: blur(3px);
   backdrop-filter: blur(3px);
   animation: transparencia 850ms cubic-bezier(0.14, 0.78, 0.36, 1);
 }
@@ -286,7 +295,7 @@ header {
 
 .ofertas-trabajo-container {
   align-self: center;
-  margin: 3rem 3vw;
+  margin: 3rem 3vw 1rem;
   width: 90vw;
   max-width: 87rem;
 }
@@ -425,10 +434,7 @@ header {
 /* ***************************/
 
 .footer {
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
+  margin-top: auto;
   text-align: center;
   font-size: 0.8em;
   background-color: var(--color-shadow);
