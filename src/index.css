@@ -291,13 +291,42 @@ header {
   max-width: 87rem;
 }
 
-.ofertas-trabajo-titulo {
+.ofertas-trabajo-titulo-movil {
   font-weight: 900;
   font-size: var(--ff-900);
   color: var(--color-orange);
   text-align: right;
   text-shadow: 5px 5px 0px var(--color-shadow);
   line-height: 0.9;
+}
+
+.ofertas-trabajo-titulo-grande {
+  font-weight: 900;
+  font-size: var(--ff-900);
+  color: var(--color-orange);
+  text-align: right;
+  text-shadow: 5px 5px 0px var(--color-shadow);
+  line-height: 0.9;
+}
+
+/* Estilos para dispositivos móviles (hasta 767px) */
+@media (max-width: 40rem) {
+  .ofertas-trabajo-titulo-movil {
+    display: block; /* Muestra el título "Ofertas" en dispositivos móviles */
+  }
+  .ofertas-trabajo-titulo-grande {
+    display: none; /* Oculta el título "Ofertas de trabajo" en dispositivos móviles */
+  }
+}
+
+/* Estilos para pantallas grandes (mayor a 768px, puedes ajustar este valor según tus necesidades) */
+@media (min-width: 40rem) {
+  .ofertas-trabajo-titulo-movil {
+    display: none; /* Oculta el título "Ofertas" en pantallas grandes */
+  }
+  .ofertas-trabajo-titulo-grande {
+    display: block; /* Muestra el título "Ofertas de trabajo" en pantallas grandes */
+  }
 }
 
 .ofertas-trabajo-lista {
