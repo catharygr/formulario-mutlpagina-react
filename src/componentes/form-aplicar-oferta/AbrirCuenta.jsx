@@ -1,3 +1,5 @@
+import Acordeon from "./Acordeon";
+
 export default function AbrirCuenta() {
   return (
     <div className="pasos-container">
@@ -6,7 +8,7 @@ export default function AbrirCuenta() {
           <h2>{"Paso uno: (1/3)"}</h2>
           <h3>Abrir la cuenta</h3>
         </div>
-        <p>Texto acordeón</p>
+        <Acordeon /> Texto acordeón
         <p className="pasos-peque">
           Si tienes cuenta: <a href="#">Logueas aquí</a>
         </p>
