@@ -19,7 +19,10 @@ export default function TarjetaTrabajo({ oferta, aplicarOferta }) {
           </p>
         </div>
         <div className="ofertas-trabajo-tarjeta-btn">
-          <button onClick={() => aplicarOferta(oferta.id)}>
+          <button
+            className="btn-green"
+            onClick={() => aplicarOferta(oferta.id)}
+          >
             Aplicar a la oferta
           </button>
         </div>

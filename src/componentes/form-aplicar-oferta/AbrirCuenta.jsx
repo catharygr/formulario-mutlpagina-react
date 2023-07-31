@@ -1,37 +1,31 @@
 export default function AbrirCuenta() {
   return (
-    <div>
-      <div>
-        q<h2>{"Paso uno: (1/3)"}</h2>
-        <h3>Abrir la cuenta</h3>
+    <div className="pasos-container">
+      <div className="pasos-izquierdo">
+        <div>
+          <h2>{"Paso uno: (1/3)"}</h2>
+          <h3>Abrir la cuenta</h3>
+        </div>
         <p>Texto acordeón</p>
-        <p>
-          {" "}
-          Si ya tienes la cuenta <a href="#">logueas aquí</a>
+        <p className="pasos-peque">
+          Si tienes cuenta: <a href="#">Logueas aquí</a>
         </p>
       </div>
-      <div>
+      <div className="pasos-derecho">
         <form>
-          <label htmlFor="email">Email</label>
-          <input type="email" name="email" id="email" placeholder=""></input>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder=""
-          ></input>
+          <label htmlFor="email">Email:</label>
+          <input type="email" name="email" id="email" placeholder="" />
+          <label htmlFor="password">Password:</label>
+          <input type="password" name="password" id="password" placeholder="" />
 
-          <label htmlFor="confirmar-password">Confirma Password</label>
+          <label htmlFor="confirmar-password">Confirma Password:</label>
           <input
             type="password"
             name="password"
             id="confirmar-password"
             placeholder=""
-          >
-            {" "}
-          </input>
-          <button>Continuar</button>
+          />
+          <button className="btn-green">Continuar</button>
         </form>
       </div>
     </div>
