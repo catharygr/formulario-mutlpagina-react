@@ -411,11 +411,9 @@ header {
 .pasos-container {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2rem;
   background-color: var(--color-purple);
   color: var(--color-white);
   width: 100%;
-  padding: 1rem;
   border-radius: 0.4rem;
 }
 
@@ -446,6 +444,12 @@ header {
   font-weight: 700;
 }
 
+.pasos-derecho {
+  background-image: url(/public/assets/imagenes/bckg-baras.svg);
+  background-repeat: repeat-y;
+  background-size: cover;
+}
+
 .pasos-derecho form {
   display: flex;
   flex-direction: column;
@@ -467,11 +471,14 @@ header {
   margin-bottom: 1rem;
 }
 
+.pasos-izquierdo,
+.pasos-derecho {
+  padding: 7vw 5vw;
+}
+
 @media (min-width: 40rem) {
   .pasos-container {
     grid-template-columns: repeat(2, 1fr);
-    padding: 3rem;
-    gap: 6rem;
   }
 }
 
@@ -485,7 +492,6 @@ header {
   font-size: 0.8em;
   background-color: var(--color-shadow);
   color: var(--color-white);
-  padding: 1rem;
 }
 .footer a {
   cursor: pointer;
