@@ -2,13 +2,13 @@
 import * as Accordion from "@radix-ui/react-accordion";
 import { ChevronDown } from "react-feather";
 
-export default function Acordeon({ encabezado, contenido }) {
+export default function Acordeon({ encabezado, contenido, id }) {
   return (
-    <Accordion.Root>
+    <Accordion.Root type="single" collapsible={true}>
       <Accordion.Item>
         <Accordion.Header>
-          <Accordion.Trigger>
-            {encabezado} <ChevronDown />
+          <Accordion.Trigger key={id} value={id}>
+            <ChevronDown /> {encabezado}
           </Accordion.Trigger>
         </Accordion.Header>
         <Accordion.Content>{contenido}</Accordion.Content>
