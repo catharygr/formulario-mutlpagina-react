@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-export default function TarjetaTrabajo({ oferta }) {
+export default function TarjetaTrabajo({ oferta, aplicarOferta }) {
   return (
     <div className="container-querry">
       <div className="ofertas-trabajo-tarjeta">
@@ -19,7 +19,9 @@ export default function TarjetaTrabajo({ oferta }) {
           </p>
         </div>
         <div className="ofertas-trabajo-tarjeta-btn">
-          <button>Aplicar a la oferta</button>
+          <button onClick={() => aplicarOferta(oferta.id)}>
+            Aplicar a la oferta
+          </button>
         </div>
       </div>
     </div>
