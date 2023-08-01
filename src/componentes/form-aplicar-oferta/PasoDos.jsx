@@ -2,9 +2,9 @@
 import Acordeon from "./Acordeon";
 
 const dataAcordeon = {
-  encabezado: "¿Por qué crear otra cuenta?",
+  encabezado: "¿Puedo poner nombre falso?",
   contenido:
-    "No vamos a recopilar ninguno de tus datos personales antes de que crees tu cuenta. \n\n ¿Puedes preguntar por qué? Bueno, eso te permitirá poder eliminar todos tus datos personales después de que el proceso de selección haya terminado, ya sea exitoso para ambas partes o no. No compartimos esos datos con nadie más que nuestro reclutador. \n\n Él es el único autorizado para revisarlos. Así que, regístrate y veamos si podemos trabajar juntos y al final hay un gran botón rojo en tu cuenta que eliminará tus datos si así lo deseas.",
+    "¡Oh, vaya! Lamentablemente, en nuestra empresa no estamos contratando espías secretos en este momento, así que te recomendaría usar tu nombre real... a menos que tengas una identidad de agente secreto que debamos conocer. \n\n  Usar un nombre falso está estrictamente prohibido, pero si te llamas 'Rockefeller McMillonario', podríamos hacer una excepción. \n\n ¡Prometemos no verificar tu fortuna!¡Claro que puedes usar un nombre falso! Pero debes estar preparado para contestar el teléfono como 'Capitán/ Capitana de la Productividad' cuando te llamemos",
 };
 
 export default function PasoUno({ handleForm, form }) {
@@ -12,7 +12,7 @@ export default function PasoUno({ handleForm, form }) {
     <div className="pasos-container">
       <div className="pasos-izquierdo">
         <div>
-          <h2>{"Paso uno: (1/3)"}</h2>
+          <h2>{"Paso uno: (1/2)"}</h2>
           <h3>Abrir cuenta</h3>
         </div>
         <Acordeon

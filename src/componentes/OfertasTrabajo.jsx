@@ -2,10 +2,11 @@ import { data } from "../assets/data";
 import TarjetaTrabajo from "./TarjetaTrabajo";
 import { useState } from "react";
 import PasoUno from "./form-aplicar-oferta/PasoUno";
+import PasoDos from "./form-aplicar-oferta/PasoDos";
 
 export default function OfertasTrabajo() {
   // inicio, paso-uno, paso-dos, paso-tres
-  const [pasos, setPasos] = useState("inicio");
+  const [pasos, setPasos] = useState("paso-dos");
   const [form, setForm] = useState({
     trabajoSolicitado: [],
     email: "",
@@ -51,6 +52,9 @@ export default function OfertasTrabajo() {
         {pasos === "inicio" && tarjetaTrabajoMapeo}
         {pasos === "paso-uno" && (
           <PasoUno handleForm={handleForm} form={form} />
+        )}
+        {pasos === "paso-dos" && (
+          <PasoDos handleForm={handleForm} form={form} />
         )}
       </div>
     </main>
