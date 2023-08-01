@@ -445,7 +445,7 @@ header {
 }
 
 .pasos-derecho {
-  background-image: url(/public/assets/imagenes/bckg-baras.svg);
+  background-image: url("/assets/imagenes/bckg-baras.svg");
   background-repeat: repeat-y;
   background-size: cover;
 }

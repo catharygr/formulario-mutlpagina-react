@@ -1,11 +1,11 @@
 import { data } from "../assets/data";
 import TarjetaTrabajo from "./TarjetaTrabajo";
-import useToggle from "../utilidades/useToggle";
 import { useState } from "react";
-import AbrirCuenta from "./form-aplicar-oferta/AbrirCuenta";
+import PasoUno from "./form-aplicar-oferta/PasoUno";
 
 export default function OfertasTrabajo() {
-  const [estaAplicando, setEstaAplicando] = useToggle(false);
+  // inicio, paso-uno, paso-dos, paso-tres
+  const [pasos, setPasos] = useState("inicio");
   const [form, setForm] = useState({
     trabajoSolicitado: [],
     email: "",
@@ -21,7 +21,7 @@ export default function OfertasTrabajo() {
   }
 
   function handleAplicar(ofertaId) {
-    setEstaAplicando();
+    setPasos("paso-uno");
     setForm({
       ...form,
       trabajoSolicitado: [...form.trabajoSolicitado, ofertaId],
@@ -41,17 +41,16 @@ export default function OfertasTrabajo() {
     <main className="ofertas-trabajo-container">
       {/* Título para dispositivos móviles */}
       <div className="ofertas-trabajo-titulo-movil">
-        {estaAplicando ? <h1>Vamos...!</h1> : <h1>Ofertas</h1>}
+        {pasos === "inicio" ? <h1>Ofertas</h1> : <h1>Vamos...!</h1>}
       </div>
       {/* Título para pantallas grandes */}
       <div className="ofertas-trabajo-titulo-grande">
-        {estaAplicando ? <h1>Vamos...!</h1> : <h1>Ofertas de trabajo</h1>}
+        {pasos === "inicio" ? <h1>Ofertas de trabajo</h1> : <h1>Vamos...!</h1>}
       </div>
       <div className="ofertas-trabajo-lista">
-        {!estaAplicando ? (
-          tarjetaTrabajoMapeo
-        ) : (
-          <AbrirCuenta handleForm={handleForm} form={form} />
+        {pasos === "inicio" && tarjetaTrabajoMapeo}
+        {pasos === "paso-uno" && (
+          <PasoUno handleForm={handleForm} form={form} />
         )}
       </div>
     </main>
