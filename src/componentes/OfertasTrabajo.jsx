@@ -48,7 +48,11 @@ export default function OfertasTrabajo() {
         {estaAplicando ? <h1>Vamos...!</h1> : <h1>Ofertas de trabajo</h1>}
       </div>
       <div className="ofertas-trabajo-lista">
-        {!estaAplicando ? tarjetaTrabajoMapeo : <AbrirCuenta />}
+        {!estaAplicando ? (
+          tarjetaTrabajoMapeo
+        ) : (
+          <AbrirCuenta handleForm={handleForm} form={form} />
+        )}
       </div>
     </main>
   );

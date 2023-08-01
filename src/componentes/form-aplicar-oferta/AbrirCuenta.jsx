@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import Acordeon from "./Acordeon";
 
 const dataAcordeon = {
@@ -6,13 +7,13 @@ const dataAcordeon = {
     "No vamos a recopilar ninguno de tus datos personales antes de que crees tu cuenta. \n\n ¿Puedes preguntar por qué? Bueno, eso te permitirá poder eliminar todos tus datos personales después de que el proceso de selección haya terminado, ya sea exitoso para ambas partes o no. No compartimos esos datos con nadie más que nuestro reclutador. \n\n Él es el único autorizado para revisarlos. Así que, regístrate y veamos si podemos trabajar juntos y al final hay un gran botón rojo en tu cuenta que eliminará tus datos si así lo deseas.",
 };
 
-export default function AbrirCuenta() {
+export default function AbrirCuenta({ handleForm, form }) {
   return (
     <div className="pasos-container">
       <div className="pasos-izquierdo">
         <div>
           <h2>{"Paso uno: (1/3)"}</h2>
-          <h3>Abrir la cuenta</h3>
+          <h3>Abrir cuenta</h3>
         </div>
         <Acordeon
           encabezado={dataAcordeon.encabezado}
@@ -25,18 +26,32 @@ export default function AbrirCuenta() {
       <div className="pasos-derecho">
         <form>
           <label htmlFor="email">Email:</label>
-          <input type="email" name="email" id="email" placeholder="" />
+          <input
+            required
+            type="email"
+            name="email"
+            id="email"
+            value={form.email}
+            onChange={handleForm}
+          />
           <label htmlFor="password">Password:</label>
-          <input type="password" name="password" id="password" placeholder="" />
+          <input
+            required
+            type="password"
+            name="password"
+            id="password"
+            value={form.password}
+            onChange={handleForm}
+          />
 
           <label htmlFor="confirmar-password">Confirma Password:</label>
           <input
+            required
             type="password"
             name="password"
             id="confirmar-password"
-            placeholder=""
           />
-          <button className="btn-green">Continuar</button>
+          <button className="btn-green">Crear cuenta</button>
         </form>
       </div>
     </div>
