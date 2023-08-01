@@ -482,6 +482,36 @@ header {
   }
 }
 
+/* Acordeon */
+
+.acordeon-h4 {
+  font-size: var(--ff-400);
+  margin-bottom: 0.5rem;
+  background-color: var(--color-shadow);
+  padding: 0.3rem;
+  border-radius: 0.2rem;
+}
+
+.acordeon-h4 button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.acordeon-border {
+  border-left: 3px solid var(--color-orange);
+  padding-left: 0.5rem;
+}
+
+.acordeon-trigger[data-state="open"] svg {
+  transform: rotate(180deg);
+}
+
+.acordeon-contenido p {
+  font-size: var(--ff-300);
+  margin-top: 0.5rem;
+}
+
 /* ***************************/
 /* Footer componente         */
 /* ***************************/
