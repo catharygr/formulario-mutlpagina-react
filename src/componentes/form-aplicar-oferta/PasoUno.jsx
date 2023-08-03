@@ -10,15 +10,26 @@ const dataAcordeon = {
     "No vamos a recopilar ninguno de tus datos personales antes de que crees tu cuenta. \n\n ¿Puedes preguntar por qué? Bueno, eso te permitirá poder eliminar todos tus datos personales después de que el proceso de selección haya terminado, ya sea exitoso para ambas partes o no. No compartimos esos datos con nadie más que nuestro reclutador. \n\n Él es el único autorizado para revisarlos. Así que, regístrate y veamos si podemos trabajar juntos y al final hay un gran botón rojo en tu cuenta que eliminará tus datos si así lo deseas.",
 };
 
-export default function PasoUno({ handleForm, form, setPasos }) {
+export default function PasoUno({ handleForm, form, setPasos, setForm }) {
   const [btnDesabilitado, setBtnDesabilitado] = useState(true);
   const [estaRegistrado, setEstaRegistrado] = useState(true);
   const [repetirPassword, setRepetirPassword] = useState("");
   const [repetirPasswordString, setRepetirPasswordString] = useState("");
   const formRef = useRef();
   const id = useId();
-  function registrarUsuario(e) {
+
+  //  Funcion para limpiar el formulario
+  function limpiarFormulario() {
+    setForm({
+      email: "",
+      password: "",
+    });
+  }
+
+  // Funcion para loguear o registrarse
+  function handleSubmit(e) {
     e.preventDefault();
+    formRef.current.disabled = true;
 
     createUserWithEmailAndPassword(auth, form.email, form.password)
       .then((userCredential) => {
@@ -49,7 +60,15 @@ export default function PasoUno({ handleForm, form, setPasos }) {
       setRepetirPasswordString("");
       setBtnDesabilitado(false);
     }
+    setRepetirPassword(confirmarPassword);
   }
+
+  // Funcion para cambiar entre loguear o registrar usuario
+  function handleRegistrarse() {
+    setEstaRegistrado(!estaRegistrado);
+    limpiarFormulario();
+  }
+
   return (
     <div className="pasos-container">
       <div className="pasos-izquierdo">
@@ -66,7 +85,7 @@ export default function PasoUno({ handleForm, form, setPasos }) {
         </p>
       </div>
       <div className="pasos-derecho">
-        <form onSubmit={registrarUsuario}>
+        <form onSubmit={handleSubmit}>
           <label htmlFor="email">Email:</label>
           <input
             required={true}
@@ -86,22 +105,36 @@ export default function PasoUno({ handleForm, form, setPasos }) {
             onChange={handleForm}
           />
 
-          <label htmlFor="confirmar-password">Confirma Password:</label>
-          <input
-            required={true}
-            type="password"
-            name="password"
-            id={`${id}-confirmar-password`}
-            value={repetirPassword}
-            onChange={handleConfirmarPassword}
-          />
+          {!estaRegistrado && (
+            <>
+              <label htmlFor={`${id}-confirmar-password`}>
+                Repetir contraseña:{" "}
+                {
+                  <span style={{ color: "var(--color-acentado)" }}>
+                    {repetirPasswordString}
+                  </span>
+                }
+              </label>
+              <input
+                required={true}
+                type="password"
+                name="password"
+                id={`${id}-confirmar-password`}
+                value={repetirPassword}
+                onChange={handleConfirmarPassword}
+              />
+            </>
+          )}
+
           <button
             disabled={btnDesabilitado}
             ref={formRef}
             onClick={handleRegistrarse}
             className="btn-green"
           >
-            Crear cuenta
+            {estaRegistrado
+              ? "Si no tienes cuenta, regístrate..."
+              : "Ya tienes cuenta, loguea..."}
           </button>
         </form>
       </div>
