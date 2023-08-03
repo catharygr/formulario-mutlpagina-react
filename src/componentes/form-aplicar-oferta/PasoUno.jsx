@@ -2,7 +2,7 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import Acordeon from "./Acordeon";
 import { auth } from "../../utilidades/firebase";
-import { useRef, useState } from "react";
+import { useRef, useState, useId } from "react";
 
 const dataAcordeon = {
   encabezado: "¿Por qué crear otra cuenta?",
@@ -16,6 +16,7 @@ export default function PasoUno({ handleForm, form, setPasos }) {
   const [repetirPassword, setRepetirPassword] = useState("");
   const [repetirPasswordString, setRepetirPasswordString] = useState("");
   const formRef = useRef();
+  const id = useId();
   function registrarUsuario(e) {
     e.preventDefault();
 
@@ -54,7 +55,7 @@ export default function PasoUno({ handleForm, form, setPasos }) {
       <div className="pasos-izquierdo">
         <div>
           <h2>{"Paso uno: (1/3)"}</h2>
-          <h3>Abrir cuenta</h3>
+          <h3>{estaRegistrado ? "Abrir cuenta" : "Regístrate"}</h3>
         </div>
         <Acordeon
           encabezado={dataAcordeon.encabezado}
@@ -71,7 +72,7 @@ export default function PasoUno({ handleForm, form, setPasos }) {
             required={true}
             type="email"
             name="email"
-            id="email"
+            id={`${id}-email`}
             value={form.email}
             onChange={handleForm}
           />
@@ -80,7 +81,7 @@ export default function PasoUno({ handleForm, form, setPasos }) {
             required={true}
             type="password"
             name="password"
-            id="password"
+            id={`${id}-password`}
             value={form.password}
             onChange={handleForm}
           />
@@ -90,11 +91,18 @@ export default function PasoUno({ handleForm, form, setPasos }) {
             required={true}
             type="password"
             name="password"
-            id="confirmar-password"
+            id={`${id}-confirmar-password`}
             value={repetirPassword}
             onChange={handleConfirmarPassword}
           />
-          <button className="btn-green">Crear cuenta</button>
+          <button
+            disabled={btnDesabilitado}
+            ref={formRef}
+            onClick={handleRegistrarse}
+            className="btn-green"
+          >
+            Crear cuenta
+          </button>
         </form>
       </div>
     </div>
