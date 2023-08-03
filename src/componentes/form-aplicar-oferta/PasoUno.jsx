@@ -2,6 +2,7 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import Acordeon from "./Acordeon";
 import { auth } from "../../utilidades/firebase";
+import { useRef, useState } from "react";
 
 const dataAcordeon = {
   encabezado: "¿Por qué crear otra cuenta?",
@@ -10,6 +11,11 @@ const dataAcordeon = {
 };
 
 export default function PasoUno({ handleForm, form, setPasos }) {
+  const [btnDesabilitado, setBtnDesabilitado] = useState(true);
+  const [estaRegistrado, setEstaRegistrado] = useState(true);
+  const [repetirPassword, setRepetirPassword] = useState("");
+  const [repetirPasswordString, setRepetirPasswordString] = useState("");
+  const formRef = useRef();
   function registrarUsuario(e) {
     e.preventDefault();
 
@@ -29,6 +35,20 @@ export default function PasoUno({ handleForm, form, setPasos }) {
       });
   }
 
+  // Funcion para chequear que las contraeñas sean iguales
+  function handleConfirmarPassword(e) {
+    const confirmarPassword = e.target.value;
+
+    if (confirmarPassword !== form.password) {
+      formRef.current.disabled = true;
+      setRepetirPasswordString("Las contraseñas no coinciden");
+      setBtnDesabilitado(true);
+    } else if (confirmarPassword === form.password) {
+      formRef.current.disabled = false;
+      setRepetirPasswordString("");
+      setBtnDesabilitado(false);
+    }
+  }
   return (
     <div className="pasos-container">
       <div className="pasos-izquierdo">
@@ -48,7 +68,7 @@ export default function PasoUno({ handleForm, form, setPasos }) {
         <form onSubmit={registrarUsuario}>
           <label htmlFor="email">Email:</label>
           <input
-            required
+            required={true}
             type="email"
             name="email"
             id="email"
@@ -57,7 +77,7 @@ export default function PasoUno({ handleForm, form, setPasos }) {
           />
           <label htmlFor="password">Password:</label>
           <input
-            required
+            required={true}
             type="password"
             name="password"
             id="password"
@@ -67,10 +87,12 @@ export default function PasoUno({ handleForm, form, setPasos }) {
 
           <label htmlFor="confirmar-password">Confirma Password:</label>
           <input
-            required
+            required={true}
             type="password"
             name="password"
             id="confirmar-password"
+            value={repetirPassword}
+            onChange={handleConfirmarPassword}
           />
           <button className="btn-green">Crear cuenta</button>
         </form>
