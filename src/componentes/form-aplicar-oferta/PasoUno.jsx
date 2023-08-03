@@ -12,6 +12,7 @@ const dataAcordeon = {
 export default function PasoUno({ handleForm, form, setPasos }) {
   function registrarUsuario(e) {
     e.preventDefault();
+
     createUserWithEmailAndPassword(auth, form.email, form.password)
       .then((userCredential) => {
         // Signed in
