@@ -6,7 +6,7 @@ import PasoDos from "./form-aplicar-oferta/PasoDos";
 
 export default function OfertasTrabajo() {
   // inicio, paso-uno, paso-dos, paso-tres
-  const [pasos, setPasos] = useState("paso-dos");
+  const [pasos, setPasos] = useState("inicio");
   const [form, setForm] = useState({
     trabajoSolicitado: [],
     email: "",
@@ -28,7 +28,6 @@ export default function OfertasTrabajo() {
       trabajoSolicitado: [...form.trabajoSolicitado, ofertaId],
     });
   }
-  console.log(form);
 
   const tarjetaTrabajoMapeo = data.map((oferta) => (
     <TarjetaTrabajo
@@ -54,7 +53,7 @@ export default function OfertasTrabajo() {
           <PasoUno handleForm={handleForm} form={form} />
         )}
         {pasos === "paso-dos" && (
-          <PasoDos handleForm={handleForm} form={form} />
+          <PasoDos handleForm={handleForm} form={form} setPasos={setPasos} />
         )}
       </div>
     </main>
