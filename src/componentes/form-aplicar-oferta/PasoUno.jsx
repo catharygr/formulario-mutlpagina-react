@@ -21,6 +21,22 @@ export default function PasoUno({ handleForm, form, setPasos, setForm }) {
   const formRef = useRef();
   const id = useId();
 
+  // Funcion para chequear que las contraeñas sean iguales
+  function handleConfirmarPassword(e) {
+    const confirmarPassword = e.target.value;
+
+    if (confirmarPassword !== form.password) {
+      formRef.current.disabled = true;
+      setRepetirPasswordString("Las contraseñas no coinciden");
+      setBtnDesabilitado(true);
+    } else if (confirmarPassword === form.password) {
+      formRef.current.disabled = false;
+      setRepetirPasswordString("Coinciden");
+      setBtnDesabilitado(false);
+    }
+    setRepetirPassword(confirmarPassword);
+  }
+
   //  Funcion para limpiar el formulario
   function limpiarFormulario() {
     setForm({
@@ -29,6 +45,12 @@ export default function PasoUno({ handleForm, form, setPasos, setForm }) {
     });
     setRepetirPassword("");
     setRepetirPasswordString("");
+  }
+
+  // Funcion para cambiar entre loguear o registrar usuario
+  function handleRegistrarse() {
+    setEstaRegistrado(!estaRegistrado);
+    limpiarFormulario();
   }
 
   // Funcion para loguear o registrarse
@@ -75,34 +97,16 @@ export default function PasoUno({ handleForm, form, setPasos, setForm }) {
       });
   }
 
-  // Funcion para chequear que las contraeñas sean iguales
-  function handleConfirmarPassword(e) {
-    const confirmarPassword = e.target.value;
-
-    if (confirmarPassword !== form.password) {
-      formRef.current.disabled = true;
-      setRepetirPasswordString("Las contraseñas no coinciden");
-      setBtnDesabilitado(true);
-    } else if (confirmarPassword === form.password) {
-      formRef.current.disabled = false;
-      setRepetirPasswordString("Coinciden");
-      setBtnDesabilitado(false);
-    }
-    setRepetirPassword(confirmarPassword);
-  }
-
-  // Funcion para cambiar entre loguear o registrar usuario
-  function handleRegistrarse() {
-    setEstaRegistrado(!estaRegistrado);
-    limpiarFormulario();
-  }
+  if (form.email && form.password && btnDesabilitado) setBtnDesabilitado(false);
+  else if ((!form.email || !form.password) && !btnDesabilitado)
+    setBtnDesabilitado(true);
 
   return (
     <div className="pasos-container">
       <div className="pasos-izquierdo">
         <div>
           <h2>{"Paso uno: (1/3)"}</h2>
-          <h3>{estaRegistrado ? "Abrir cuenta" : "Regístrate"}</h3>
+          <h3>{estaRegistrado ? "Loguea" : "Regístrate"}</h3>
         </div>
         <Acordeon
           encabezado={dataAcordeon.encabezado}
@@ -136,7 +140,7 @@ export default function PasoUno({ handleForm, form, setPasos, setForm }) {
 
           {!estaRegistrado && (
             <>
-              <label htmlFor={`${id}-confirmar-password`}>
+              <label htmlFor={`${id}-confirmarPassword`}>
                 Repetir contraseña:{" "}
                 {
                   <span style={{ color: "var(--color-acentado)" }}>
@@ -149,7 +153,7 @@ export default function PasoUno({ handleForm, form, setPasos, setForm }) {
                 type="password"
                 name="password"
                 minLength={8}
-                id={`${id}-confirmar-password`}
+                id={`${id}-confirmarPassword`}
                 value={repetirPassword}
                 onChange={handleConfirmarPassword}
               />
