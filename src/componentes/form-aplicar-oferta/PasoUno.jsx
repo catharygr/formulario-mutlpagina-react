@@ -143,7 +143,7 @@ export default function PasoUno({ handleForm, form, setPasos, setForm }) {
               <label htmlFor={`${id}-confirmarPassword`}>
                 Repetir contraseña:{" "}
                 {
-                  <span style={{ color: "var(--color-acentado)" }}>
+                  <span style={{ color: "var(--color-orange)" }}>
                     {repetirPasswordString}
                   </span>
                 }
