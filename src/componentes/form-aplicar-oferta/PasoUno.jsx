@@ -1,5 +1,8 @@
 /* eslint-disable react/prop-types */
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import {
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import Acordeon from "./Acordeon";
 import { auth } from "../../utilidades/firebase";
 import { useRef, useState, useId } from "react";
@@ -24,6 +27,8 @@ export default function PasoUno({ handleForm, form, setPasos, setForm }) {
       email: "",
       password: "",
     });
+    setRepetirPassword("");
+    setRepetirPasswordString("");
   }
 
   // Funcion para loguear o registrarse
@@ -31,7 +36,28 @@ export default function PasoUno({ handleForm, form, setPasos, setForm }) {
     e.preventDefault();
     formRef.current.disabled = true;
 
-    createUserWithEmailAndPassword(auth, form.email, form.password)
+    if (!estaRegistrado) {
+      createUserWithEmailAndPassword(auth, form.email, form.password)
+        .then((userCredential) => {
+          // Signed in
+          const user = userCredential.user;
+          console.log(user);
+          setPasos("paso-dos");
+          // ...
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          formRef.current.disabled = false;
+          limpiarFormulario();
+          setBtnDesabilitado(false);
+          console.log(errorCode, errorMessage);
+          // ..
+        });
+      return;
+    }
+
+    signInWithEmailAndPassword(auth, form.email, form.password)
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
@@ -42,8 +68,10 @@ export default function PasoUno({ handleForm, form, setPasos, setForm }) {
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
+        formRef.current.disabled = false;
+        limpiarFormulario();
+        setBtnDesabilitado(false);
         console.log(errorCode, errorMessage);
-        // ..
       });
   }
 
@@ -57,7 +85,7 @@ export default function PasoUno({ handleForm, form, setPasos, setForm }) {
       setBtnDesabilitado(true);
     } else if (confirmarPassword === form.password) {
       formRef.current.disabled = false;
-      setRepetirPasswordString("");
+      setRepetirPasswordString("Coinciden");
       setBtnDesabilitado(false);
     }
     setRepetirPassword(confirmarPassword);
@@ -86,7 +114,7 @@ export default function PasoUno({ handleForm, form, setPasos, setForm }) {
       </div>
       <div className="pasos-derecho">
         <form onSubmit={handleSubmit}>
-          <label htmlFor="email">Email:</label>
+          <label htmlFor={`${id}-email`}>Email:</label>
           <input
             required={true}
             type="email"
@@ -95,11 +123,12 @@ export default function PasoUno({ handleForm, form, setPasos, setForm }) {
             value={form.email}
             onChange={handleForm}
           />
-          <label htmlFor="password">Password:</label>
+          <label htmlFor={`${id}-password`}>Password:</label>
           <input
             required={true}
             type="password"
             name="password"
+            minLength={8}
             id={`${id}-password`}
             value={form.password}
             onChange={handleForm}
@@ -119,6 +148,7 @@ export default function PasoUno({ handleForm, form, setPasos, setForm }) {
                 required={true}
                 type="password"
                 name="password"
+                minLength={8}
                 id={`${id}-confirmar-password`}
                 value={repetirPassword}
                 onChange={handleConfirmarPassword}

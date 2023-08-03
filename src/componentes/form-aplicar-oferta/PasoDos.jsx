@@ -19,9 +19,6 @@ export default function PasoUno({ handleForm, form }) {
           encabezado={dataAcordeon.encabezado}
           contenido={dataAcordeon.contenido}
         />
-        <p className="pasos-peque">
-          Si tienes cuenta: <a href="#">Logueas aquí</a>
-        </p>
       </div>
       <div className="pasos-derecho">
         <form>
