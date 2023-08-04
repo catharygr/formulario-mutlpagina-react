@@ -50,12 +50,7 @@ export default function OfertasTrabajo() {
       <div className="ofertas-trabajo-lista">
         {pasos === "inicio" && tarjetaTrabajoMapeo}
         {pasos === "paso-uno" && (
-          <PasoUno
-            handleForm={handleForm}
-            form={form}
-            setPasos={setPasos}
-            setForm={setForm}
-          />
+          <PasoUno handleForm={handleForm} form={form} setPasos={setPasos} />
         )}
         {pasos === "paso-dos" && (
           <PasoDos handleForm={handleForm} form={form} setPasos={setPasos} />
