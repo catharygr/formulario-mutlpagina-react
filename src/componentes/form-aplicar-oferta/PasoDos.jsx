@@ -59,7 +59,7 @@ export default function PasoDos({ handleForm, form, setPasos }) {
               onChange={handleForm}
             />
           </div>
-          <button className="btn-green">Crear cuenta</button>
+          <button className="btn-green">Siguiente paso</button>
         </form>
       </div>
     </div>

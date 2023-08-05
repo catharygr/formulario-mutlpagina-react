@@ -3,6 +3,7 @@ import TarjetaTrabajo from "./TarjetaTrabajo";
 import { useState } from "react";
 import PasoUno from "./form-aplicar-oferta/PasoUno";
 import PasoDos from "./form-aplicar-oferta/PasoDos";
+import PasoTres from "./form-aplicar-oferta/PasoTres";
 
 export default function OfertasTrabajo() {
   // inicio, paso-uno, paso-dos, paso-tres
@@ -63,6 +64,9 @@ export default function OfertasTrabajo() {
         )}
         {pasos === "paso-dos" && (
           <PasoDos handleForm={handleForm} form={form} setPasos={setPasos} />
+        )}
+        {pasos === "paso-tres" && (
+          <PasoTres handleForm={handleForm} form={form} />
         )}
       </div>
     </main>
