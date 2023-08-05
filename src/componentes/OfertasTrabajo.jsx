@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { data } from "../assets/data";
 import TarjetaTrabajo from "./TarjetaTrabajo";
 import { useState } from "react";
