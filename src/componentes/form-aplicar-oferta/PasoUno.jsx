@@ -10,27 +10,23 @@ const dataAcordeon = {
     "No vamos a recopilar ninguno de tus datos personales antes de que crees tu cuenta. \n\n ¿Puedes preguntar por qué? Bueno, eso te permitirá poder eliminar todos tus datos personales después de que el proceso de selección haya terminado, ya sea exitoso para ambas partes o no. No compartimos esos datos con nadie más que nuestro reclutador. \n\n Él es el único autorizado para revisarlos. Así que, regístrate y veamos si podemos trabajar juntos y al final hay un gran botón rojo en tu cuenta que eliminará tus datos si así lo deseas.",
 };
 
-export default function PasoUno({ handleForm, form, setPasos }) {
+export default function PasoUno({ handleForm, form, setPasos, setUseUD }) {
   const [repetirPassword, setRepetirPassword] = useState("");
   const [btnDesabilitado, setBtnDesabilitado] = useState(true);
-  const [useUD, setUseUD] = useState("");
+  const [errorMensaje, setErrorMensaje] = useState("");
 
   // Funcion para loguear o registrarse
   function handleSubmit(e) {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, form.email, form.password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
         setUseUD(user.uid);
         setPasos("paso-dos");
-        // ...
       })
       .catch((error) => {
-        const errorCode = error.code;
         const errorMessage = error.message;
-        console.log(errorCode, errorMessage);
-        // ..
+        setErrorMensaje(errorMessage);
       });
     return;
   }
@@ -108,6 +104,7 @@ export default function PasoUno({ handleForm, form, setPasos }) {
           <button disabled={btnDesabilitado} className="btn-green">
             Continuar
           </button>
+          {errorMensaje && <p className="error-msj">{errorMensaje}</p>}
         </form>
       </div>
     </div>

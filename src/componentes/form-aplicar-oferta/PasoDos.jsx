@@ -7,13 +7,18 @@ const dataAcordeon = {
     "¡Oh, vaya! Lamentablemente, en nuestra empresa no estamos contratando espías secretos en este momento, así que te recomendaría usar tu nombre real... a menos que tengas una identidad de agente secreto que debamos conocer. \n\n  Usar un nombre falso está estrictamente prohibido, pero si te llamas 'Rockefeller McMillonario', podríamos hacer una excepción. \n\n ¡Prometemos no verificar tu fortuna!¡Claro que puedes usar un nombre falso! Pero debes estar preparado para contestar el teléfono como 'Capitán/ Capitana de la Productividad' cuando te llamemos",
 };
 
-export default function PasoUno({ handleForm, form }) {
+export default function PasoDos({ handleForm, form, setPasos }) {
+  function handleSubmit(e) {
+    e.preventDefault();
+    setPasos("paso-tres");
+  }
+  console.log(form);
   return (
     <div className="pasos-container">
       <div className="pasos-izquierdo">
         <div>
-          <h2>{"Paso uno: (2/3)"}</h2>
-          <h3>Abrir cuenta</h3>
+          <h2>{"Paso dos: (2/3)"}</h2>
+          <h3>Datos personales</h3>
         </div>
         <Acordeon
           encabezado={dataAcordeon.encabezado}
@@ -21,33 +26,39 @@ export default function PasoUno({ handleForm, form }) {
         />
       </div>
       <div className="pasos-derecho">
-        <form>
-          <label htmlFor="email">Email:</label>
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="nombre">Nombre:</label>
           <input
             required
-            type="email"
-            name="email"
-            id="email"
-            value={form.email}
+            type="text"
+            name="nombre"
+            id="nombre"
+            value={form.nombre}
             onChange={handleForm}
           />
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="telef">Teléfono:</label>
           <input
             required
-            type="password"
-            name="password"
-            id="password"
-            value={form.password}
+            type="number"
+            name="telef"
+            id="telef"
+            value={form.telef}
             onChange={handleForm}
           />
-
-          <label htmlFor="confirmar-password">Confirma Password:</label>
-          <input
-            required
-            type="password"
-            name="password"
-            id="confirmar-password"
-          />
+          <div className="eres-resistente">
+            <label htmlFor="marcado">
+              ¿Eres resistente al agua{" "}
+              <span style={{ fontSize: "20px" }}>🌧️</span>?
+            </label>
+            <input
+              required
+              id="marcado"
+              type="checkbox"
+              name="eresResistente"
+              checked={form.eresResistente}
+              onChange={handleForm}
+            />
+          </div>
           <button className="btn-green">Crear cuenta</button>
         </form>
       </div>

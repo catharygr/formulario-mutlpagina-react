@@ -6,18 +6,22 @@ import PasoDos from "./form-aplicar-oferta/PasoDos";
 
 export default function OfertasTrabajo() {
   // inicio, paso-uno, paso-dos, paso-tres
-  const [pasos, setPasos] = useState("inicio");
+  const [pasos, setPasos] = useState("paso-dos");
   const [form, setForm] = useState({
     trabajoSolicitado: [],
     email: "",
     password: "",
+    nombre: "",
+    telef: "",
+    eresResistente: false,
   });
+  const [useUD, setUseUD] = useState("");
 
   function handleForm(e) {
-    const { name, value } = e.target;
+    const { name, value, checked, type } = e.target;
     setForm({
       ...form,
-      [name]: value,
+      [name]: type === "checkbox" ? checked : value,
     });
   }
 
@@ -50,7 +54,12 @@ export default function OfertasTrabajo() {
       <div className="ofertas-trabajo-lista">
         {pasos === "inicio" && tarjetaTrabajoMapeo}
         {pasos === "paso-uno" && (
-          <PasoUno handleForm={handleForm} form={form} setPasos={setPasos} />
+          <PasoUno
+            handleForm={handleForm}
+            form={form}
+            setPasos={setPasos}
+            setUseUD={setUseUD}
+          />
         )}
         {pasos === "paso-dos" && (
           <PasoDos handleForm={handleForm} form={form} setPasos={setPasos} />
