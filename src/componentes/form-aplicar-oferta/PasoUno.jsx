@@ -13,7 +13,7 @@ const dataAcordeon = {
 export default function PasoUno({ handleForm, form, setPasos }) {
   const [repetirPassword, setRepetirPassword] = useState("");
   const [btnDesabilitado, setBtnDesabilitado] = useState(true);
-  console.log(form);
+  const [useUD, setUseUD] = useState("");
 
   // Funcion para loguear o registrarse
   function handleSubmit(e) {
@@ -22,7 +22,7 @@ export default function PasoUno({ handleForm, form, setPasos }) {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
-        console.log(user);
+        setUseUD(user.uid);
         setPasos("paso-dos");
         // ...
       })
@@ -35,7 +35,14 @@ export default function PasoUno({ handleForm, form, setPasos }) {
     return;
   }
 
-  if
+  if (form.password === repetirPassword && btnDesabilitado) {
+    if (form.email && form.password && repetirPassword) {
+      setBtnDesabilitado(false);
+    }
+  }
+  if (form.password !== repetirPassword && !btnDesabilitado) {
+    setBtnDesabilitado(true);
+  }
 
   return (
     <div className="pasos-container">
@@ -63,21 +70,37 @@ export default function PasoUno({ handleForm, form, setPasos }) {
             value={form.email}
             onChange={handleForm}
           />
-          <label htmlFor="password">Password:</label>
+          <label htmlFor="password">
+            Password: <span className="label-span">Mínimo 8 caracteres</span>
+          </label>
           <input
             required={true}
             type="password"
             name="password"
             id="password"
+            min={8}
             value={form.password}
             onChange={handleForm}
           />
-          <label htmlFor="confirmar-password">Confirmar password:</label>
+          <label htmlFor="confirmar-password">
+            Confirmar password:{" "}
+            {repetirPassword && (
+              <span
+                className="label-span"
+                style={{ color: "var(--color-orange)" }}
+              >
+                {form.password !== repetirPassword || !repetirPassword
+                  ? "Las contraseñas no coinciden"
+                  : "Las contraseñas coinciden"}
+              </span>
+            )}
+          </label>
           <input
             required={true}
             type="password"
             name="password"
             id="confirmar-password"
+            min={8}
             value={repetirPassword}
             onChange={(e) => setRepetirPassword(e.target.value)}
           />

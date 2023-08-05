@@ -188,6 +188,11 @@ body,
   scale: 1.03;
 }
 
+.btn-green:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* ********************** */
 /* Header componente      */
 /* ********************** */
@@ -462,6 +467,11 @@ header {
   margin-bottom: 0.4rem;
 }
 
+.label-span {
+  color: var(--color-white);
+  font-size: var(--ff-200);
+  margin: 1rem;
+}
 .pasos-derecho input {
   padding: 0.5rem;
   border: none;

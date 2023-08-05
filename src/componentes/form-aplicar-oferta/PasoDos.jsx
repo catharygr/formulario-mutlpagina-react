@@ -12,7 +12,7 @@ export default function PasoUno({ handleForm, form }) {
     <div className="pasos-container">
       <div className="pasos-izquierdo">
         <div>
-          <h2>{"Paso uno: (1/2)"}</h2>
+          <h2>{"Paso uno: (2/3)"}</h2>
           <h3>Abrir cuenta</h3>
         </div>
         <Acordeon
