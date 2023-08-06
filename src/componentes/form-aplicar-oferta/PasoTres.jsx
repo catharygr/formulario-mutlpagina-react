@@ -16,7 +16,7 @@ export default function PasoTres({ handleForm, form }) {
     <div className="pasos-container">
       <div className="pasos-izquierdo">
         <div>
-          <h2>{"Paso dos: (3/3)"}</h2>
+          <h2>{"Último paso: (3/3)"}</h2>
           <h3>Tus experiencias de trabajo</h3>
         </div>
         <Acordeon

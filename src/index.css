@@ -488,6 +488,7 @@ textarea {
   background-color: var(--color-white);
   color: var(--color-black);
   margin-bottom: 1rem;
+  width: 100%;
 }
 
 textarea {

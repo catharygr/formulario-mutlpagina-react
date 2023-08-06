@@ -12,7 +12,6 @@ export default function PasoDos({ handleForm, form, setPasos }) {
     e.preventDefault();
     setPasos("paso-tres");
   }
-  console.log(form);
   return (
     <div className="pasos-container">
       <div className="pasos-izquierdo">
