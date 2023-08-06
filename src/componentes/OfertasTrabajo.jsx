@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import { data } from "../assets/data";
 import TarjetaTrabajo from "./TarjetaTrabajo";
 import { useState } from "react";
@@ -8,7 +7,7 @@ import PasoTres from "./form-aplicar-oferta/PasoTres";
 
 export default function OfertasTrabajo() {
   // inicio, paso-uno, paso-dos, paso-tres
-  const [pasos, setPasos] = useState("paso-tres");
+  const [pasos, setPasos] = useState("inicio");
   const [form, setForm] = useState({
     trabajoSolicitado: [],
     email: "",
@@ -19,8 +18,11 @@ export default function OfertasTrabajo() {
     habilidades: "",
     cvRef: "",
     eresResistente: false,
+    fileUrl: "",
+    fileName: "",
   });
-  const [useUD, setUseUD] = useState("");
+  const [userUID, setUserUID] = useState("");
+  console.log(userUID);
 
   function handleForm(e) {
     const { name, value, checked, type } = e.target;
@@ -63,14 +65,19 @@ export default function OfertasTrabajo() {
             handleForm={handleForm}
             form={form}
             setPasos={setPasos}
-            setUseUD={setUseUD}
+            setUserUID={setUserUID}
           />
         )}
         {pasos === "paso-dos" && (
           <PasoDos handleForm={handleForm} form={form} setPasos={setPasos} />
         )}
         {pasos === "paso-tres" && (
-          <PasoTres handleForm={handleForm} form={form} />
+          <PasoTres
+            handleForm={handleForm}
+            form={form}
+            userUID={userUID}
+            setForm={setForm}
+          />
         )}
       </div>
     </main>

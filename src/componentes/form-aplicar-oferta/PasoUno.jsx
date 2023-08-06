@@ -10,7 +10,7 @@ const dataAcordeon = {
     "No vamos a recopilar ninguno de tus datos personales antes de que crees tu cuenta. \n\n ¿Puedes preguntar por qué? Bueno, eso te permitirá poder eliminar todos tus datos personales después de que el proceso de selección haya terminado, ya sea exitoso para ambas partes o no. No compartimos esos datos con nadie más que nuestro reclutador. \n\n Él es el único autorizado para revisarlos. Así que, regístrate y veamos si podemos trabajar juntos y al final hay un gran botón rojo en tu cuenta que eliminará tus datos si así lo deseas.",
 };
 
-export default function PasoUno({ handleForm, form, setPasos, setUseUD }) {
+export default function PasoUno({ handleForm, form, setPasos, setUserUID }) {
   const [repetirPassword, setRepetirPassword] = useState("");
   const [btnDesabilitado, setBtnDesabilitado] = useState(true);
   const [errorMensaje, setErrorMensaje] = useState("");
@@ -21,7 +21,7 @@ export default function PasoUno({ handleForm, form, setPasos, setUseUD }) {
     createUserWithEmailAndPassword(auth, form.email, form.password)
       .then((userCredential) => {
         const user = userCredential.user;
-        setUseUD(user.uid);
+        setUserUID(user.uid);
         setPasos("paso-dos");
       })
       .catch((error) => {

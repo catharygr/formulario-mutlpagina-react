@@ -1,5 +1,9 @@
 /* eslint-disable react/prop-types */
+
 import Acordeon from "./Acordeon";
+import { refStorage } from "../../utilidades/firebase";
+import { useState, useEffect } from "react";
+import { ref as refST, uploadBytes, getDownloadURL } from "firebase/storage";
 
 const dataAcordeon = {
   encabezado: "Preguntas frecuentes:",
@@ -7,11 +11,37 @@ const dataAcordeon = {
     "¿Eres capaz de prever cuántas veces tu jefe cambiará de opinión en un día soleado? ¡Nuestros meteorólogos necesitan ser igual de flexibles!\n\n ¿Puedes soportar la presión de predecir si lloverá el día del picnic anual de los meteorólogos? Sabemos que incluso las nubes tienen un sentido del humor retorcido.\n\n ¿Eres capaz de mirar fijamente a una pantalla llena de imágenes de satélite sin caer en un trance hipnótico? ¡Necesitamos gente que pueda enfrentarse a la hipnosis meteorológica sin problemas!",
 };
 
-export default function PasoTres({ handleForm, form }) {
+export default function PasoTres({ handleForm, form, setForm, userUID }) {
+  const [cvSeleccionado, setCvSeleccionado] = useState(null);
+
   function handleSubmit(e) {
     e.preventDefault();
   }
-  console.log(form);
+
+  function handleCvSeleccionado(e) {
+    const cv = e.target.files[0];
+    setCvSeleccionado(cv);
+    console.log(cv);
+  }
+
+  useEffect(() => {
+    if (!cvSeleccionado) return;
+
+    const userFileRef = refST(refStorage, `/${userUID}`);
+    const fileRef = refST(userFileRef, cvSeleccionado?.name);
+
+    uploadBytes(fileRef, cvSeleccionado).then(() => {
+      getDownloadURL(fileRef).then((url) => {
+        setForm((oldData) => ({
+          ...oldData,
+          fileUrl: url,
+          fileName: cvSeleccionado?.name,
+        }));
+      });
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cvSeleccionado]);
+
   return (
     <div className="pasos-container">
       <div className="pasos-izquierdo">
@@ -47,9 +77,10 @@ export default function PasoTres({ handleForm, form }) {
           <input
             required
             id="cv"
+            accept="application/pdf"
             type="file"
             name="cvRef"
-            onChange={handleForm}
+            onChange={handleCvSeleccionado}
           />
 
           <button className="btn-green">Finalizar aplicación</button>
