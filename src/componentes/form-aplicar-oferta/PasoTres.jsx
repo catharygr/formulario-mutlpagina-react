@@ -26,39 +26,33 @@ export default function PasoTres({ handleForm, form }) {
       </div>
       <div className="pasos-derecho">
         <form onSubmit={handleSubmit}>
-          <label htmlFor="nombre">Nombre:</label>
-          <input
-            required
-            type="text"
-            name="nombre"
-            id="nombre"
-            value={form.nombre}
+          <label htmlFor="habilidades">Habilidades:</label>
+          <textarea
+            name="habilidades"
+            id="habilidades"
+            value={form.habilidades}
             onChange={handleForm}
           />
-          <label htmlFor="telef">Teléfono:</label>
+          <label htmlFor="experiencias">Años de experiencias :</label>
           <input
             required
             type="number"
-            name="telef"
-            id="telef"
-            value={form.telef}
+            name="experiencias"
+            id="experiencias"
+            value={form.experiencias}
             onChange={handleForm}
           />
-          <div className="eres-resistente">
-            <label htmlFor="marcado">
-              ¿Eres resistente al agua{" "}
-              <span style={{ fontSize: "20px" }}>🌧️</span>?
-            </label>
-            <input
-              required
-              id="marcado"
-              type="checkbox"
-              name="eresResistente"
-              checked={form.eresResistente}
-              onChange={handleForm}
-            />
-          </div>
-          <button className="btn-green">Crear cuenta</button>
+
+          <label htmlFor="cv">Cargar CV en pdf</label>
+          <input
+            required
+            id="cv"
+            type="file"
+            name="cvRef"
+            onChange={handleForm}
+          />
+
+          <button className="btn-green">Finalizar aplicación</button>
         </form>
       </div>
     </div>

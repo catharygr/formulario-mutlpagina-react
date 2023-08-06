@@ -15,6 +15,9 @@ export default function OfertasTrabajo() {
     password: "",
     nombre: "",
     telef: "",
+    experiencias: "",
+    habilidades: "",
+    cvRef: "",
     eresResistente: false,
   });
   const [useUD, setUseUD] = useState("");

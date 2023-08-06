@@ -480,13 +480,18 @@ header {
   font-size: var(--ff-200);
   margin: 1rem;
 }
-.pasos-derecho input {
+.pasos-derecho input,
+textarea {
   padding: 0.5rem;
   border: none;
   border-radius: 0.2rem;
   background-color: var(--color-white);
   color: var(--color-black);
   margin-bottom: 1rem;
+}
+
+textarea {
+  height: 6rem;
 }
 
 .pasos-izquierdo,
@@ -576,6 +581,7 @@ header {
   font-size: 0.8em;
   background-color: var(--color-shadow);
   color: var(--color-white);
+  padding: 1rem;
 }
 .footer a {
   cursor: pointer;
