@@ -8,7 +8,7 @@ import PasoCuatro from "./form-aplicar-oferta/PasoCuatro";
 
 export default function OfertasTrabajo() {
   // inicio, paso-uno, paso-dos, paso-tres, paso-cuatro
-  const [pasos, setPasos] = useState("paso-cuatro");
+  const [pasos, setPasos] = useState("inicio");
   const [form, setForm] = useState({
     trabajoSolicitado: [],
     email: "",
@@ -79,7 +79,9 @@ export default function OfertasTrabajo() {
             setPasos={setPasos}
           />
         )}
-        {pasos === "paso-cuatro" && <PasoCuatro setPasos={setPasos} />}
+        {pasos === "paso-cuatro" && (
+          <PasoCuatro setPasos={setPasos} userUID={userUID} />
+        )}
       </div>
     </main>
   );

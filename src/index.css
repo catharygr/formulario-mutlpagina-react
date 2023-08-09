@@ -572,6 +572,17 @@ textarea {
   margin-top: 0.5rem;
 }
 
+/* Paso cuatro */
+.usuario-data-titulo {
+  color: var(--color-green);
+}
+
+.usuario-data-value {
+  font-size: var(--ff-600);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
 /* ***************************/
 /* Footer componente         */
 /* ***************************/
