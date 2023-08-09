@@ -56,6 +56,8 @@ export default function PasoCuatro({ setPasos, userUID }) {
         <p className="usuario-data-value">
           {userData?.eresResistente ? "Si" : "No"}
         </p>
+        <button className="btn-green">Salir</button>
+        <button className="btn-green">Borrar tus datos</button>
       </div>
     </div>
   );
