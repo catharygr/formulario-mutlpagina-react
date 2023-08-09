@@ -17,10 +17,7 @@ export default function PasoTres({ handleForm, form, setForm, userUID }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    push(refDB(db), {
-      ...form,
-      userUID,
-    });
+    push(refDB(db, `${userUID}`), form);
   }
 
   function handleCvSeleccionado(e) {

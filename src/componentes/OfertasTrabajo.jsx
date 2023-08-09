@@ -21,7 +21,6 @@ export default function OfertasTrabajo() {
     fileName: "",
   });
   const [userUID, setUserUID] = useState("");
-  console.log(userUID);
 
   function handleForm(e) {
     const { name, value, checked, type } = e.target;
@@ -30,7 +29,6 @@ export default function OfertasTrabajo() {
       [name]: type === "checkbox" ? checked : value,
     });
   }
-  console.log(form);
 
   function handleAplicar(ofertaId) {
     setPasos("paso-uno");
