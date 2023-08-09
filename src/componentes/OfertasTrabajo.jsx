@@ -16,7 +16,6 @@ export default function OfertasTrabajo() {
     telef: "",
     experiencias: "",
     habilidades: "",
-    cvRef: "",
     eresResistente: false,
     fileUrl: "",
     fileName: "",
@@ -31,6 +30,7 @@ export default function OfertasTrabajo() {
       [name]: type === "checkbox" ? checked : value,
     });
   }
+  console.log(form);
 
   function handleAplicar(ofertaId) {
     setPasos("paso-uno");

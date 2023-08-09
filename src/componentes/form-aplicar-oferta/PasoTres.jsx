@@ -1,9 +1,10 @@
 /* eslint-disable react/prop-types */
 
 import Acordeon from "./Acordeon";
-import { refStorage } from "../../utilidades/firebase";
+import { db, refStorage } from "../../utilidades/firebase";
 import { useState, useEffect } from "react";
 import { ref as refST, uploadBytes, getDownloadURL } from "firebase/storage";
+import { push, ref as refDB } from "firebase/database";
 
 const dataAcordeon = {
   encabezado: "Preguntas frecuentes:",
@@ -16,6 +17,10 @@ export default function PasoTres({ handleForm, form, setForm, userUID }) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    push(refDB(db), {
+      ...form,
+      userUID,
+    });
   }
 
   function handleCvSeleccionado(e) {
@@ -79,7 +84,7 @@ export default function PasoTres({ handleForm, form, setForm, userUID }) {
             id="cv"
             accept="application/pdf"
             type="file"
-            name="cvRef"
+            name="cv"
             onChange={handleCvSeleccionado}
           />
 
