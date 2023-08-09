@@ -4,10 +4,11 @@ import { useState } from "react";
 import PasoUno from "./form-aplicar-oferta/PasoUno";
 import PasoDos from "./form-aplicar-oferta/PasoDos";
 import PasoTres from "./form-aplicar-oferta/PasoTres";
+import PasoCuatro from "./form-aplicar-oferta/PasoCuatro";
 
 export default function OfertasTrabajo() {
-  // inicio, paso-uno, paso-dos, paso-tres
-  const [pasos, setPasos] = useState("paso-tres");
+  // inicio, paso-uno, paso-dos, paso-tres, paso-cuatro
+  const [pasos, setPasos] = useState("paso-cuatro");
   const [form, setForm] = useState({
     trabajoSolicitado: [],
     email: "",
@@ -75,8 +76,10 @@ export default function OfertasTrabajo() {
             form={form}
             userUID={userUID}
             setForm={setForm}
+            setPasos={setPasos}
           />
         )}
+        {pasos === "paso-cuatro" && <PasoCuatro setPasos={setPasos} />}
       </div>
     </main>
   );

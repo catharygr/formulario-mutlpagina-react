@@ -16,7 +16,7 @@ export default function PasoDos({ handleForm, form, setPasos }) {
     <div className="pasos-container">
       <div className="pasos-izquierdo">
         <div>
-          <h2>{"Paso dos: (2/3)"}</h2>
+          <h2>{"Paso dos: (2/4)"}</h2>
           <h3>Datos personales</h3>
         </div>
         <Acordeon
