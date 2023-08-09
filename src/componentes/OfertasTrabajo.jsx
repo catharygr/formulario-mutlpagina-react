@@ -7,7 +7,7 @@ import PasoTres from "./form-aplicar-oferta/PasoTres";
 
 export default function OfertasTrabajo() {
   // inicio, paso-uno, paso-dos, paso-tres
-  const [pasos, setPasos] = useState("inicio");
+  const [pasos, setPasos] = useState("paso-tres");
   const [form, setForm] = useState({
     trabajoSolicitado: [],
     email: "",

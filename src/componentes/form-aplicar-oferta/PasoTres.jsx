@@ -14,6 +14,7 @@ const dataAcordeon = {
 
 export default function PasoTres({ handleForm, form, setForm, userUID }) {
   const [cvSeleccionado, setCvSeleccionado] = useState(null);
+  const [btnDesabilitado, setBtnDesabilitado] = useState(true);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -39,6 +40,7 @@ export default function PasoTres({ handleForm, form, setForm, userUID }) {
           fileUrl: url,
           fileName: cvSeleccionado?.name,
         }));
+        setBtnDesabilitado(false);
       });
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -85,7 +87,9 @@ export default function PasoTres({ handleForm, form, setForm, userUID }) {
             onChange={handleCvSeleccionado}
           />
 
-          <button className="btn-green">Finalizar aplicación</button>
+          <button disabled={btnDesabilitado} className="btn-green">
+            Finalizar aplicación
+          </button>
         </form>
       </div>
     </div>
