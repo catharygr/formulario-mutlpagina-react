@@ -9,7 +9,7 @@ import Loguear from "./form-aplicar-oferta/Loguear";
 
 export default function OfertasTrabajo() {
   // inicio, paso-uno, paso-dos, paso-tres, paso-cuatro, loguear
-  const [pasos, setPasos] = useState("loguear");
+  const [pasos, setPasos] = useState("inicio");
   const [form, setForm] = useState({
     trabajoSolicitado: [],
     email: "",
