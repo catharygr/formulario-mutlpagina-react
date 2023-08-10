@@ -23,25 +23,34 @@ export default function Loguear({ setPasos, setUserUID }) {
       ...form,
       [name]: value,
     });
-
-    // Validar que el email y el password no esten vacios
-    if (form.email.trim() !== "" && form.password.trim() !== "") {
-      setBtnDesabilitado(false);
-    } else {
-      setBtnDesabilitado(true);
-    }
+  }
+  // Validar que el email y el password no esten vacios
+  if (
+    form.email.trim() !== "" &&
+    form.password.trim() !== "" &&
+    btnDesabilitado
+  ) {
+    setBtnDesabilitado(false);
+  } else if (
+    (form.email.trim() === "" || form.password.trim() === "") &&
+    !btnDesabilitado
+  ) {
+    setBtnDesabilitado(true);
   }
 
   return (
     <div className="pasos-container">
       <div className="pasos-izquierdo">
         <div>
-          <h2>{"Paso uno"}</h2>
-          <h3>Loguea en tu cuenta</h3>
+          <h2>{"Paso uno:"}</h2>
+          <h3>Loguea aquí</h3>
         </div>
 
         <p className="pasos-peque">
-          ¿No tienes cuenta? <a href="#">Regístrate</a>
+          ¿No tienes cuenta?{" "}
+          <button className="btn-link" onClick={() => setPasos("paso-uno")}>
+            Regístrate
+          </button>
         </p>
       </div>
       <div className="pasos-derecho">

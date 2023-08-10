@@ -199,6 +199,14 @@ body,
   color: var(--color-white);
 }
 
+.btn-link {
+  color: var(--color-green);
+  text-decoration: underline;
+  text-decoration-thickness: 0.2rem;
+  text-underline-offset: 0.3rem;
+  font-weight: 700;
+}
+
 .error-msj {
   color: var(--color-red);
   font-size: var(--ff-300);

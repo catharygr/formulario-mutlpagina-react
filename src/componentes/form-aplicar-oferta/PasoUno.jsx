@@ -15,7 +15,7 @@ export default function PasoUno({ handleForm, form, setPasos, setUserUID }) {
   const [btnDesabilitado, setBtnDesabilitado] = useState(true);
   const [errorMensaje, setErrorMensaje] = useState("");
 
-  // Funcion para loguear o registrarse
+  // Funcion para  registrarse
   function handleSubmit(e) {
     e.preventDefault();
     createUserWithEmailAndPassword(auth, form.email, form.password)
@@ -52,7 +52,10 @@ export default function PasoUno({ handleForm, form, setPasos, setUserUID }) {
           contenido={dataAcordeon.contenido}
         />
         <p className="pasos-peque">
-          Si tienes cuenta: <a href="#">Loguea aquí</a>
+          Si tienes cuenta:{" "}
+          <button className="btn-link" onClick={() => setPasos("loguear")}>
+            Loguear aquí
+          </button>
         </p>
       </div>
       <div className="pasos-derecho">
