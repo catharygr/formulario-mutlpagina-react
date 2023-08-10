@@ -194,6 +194,11 @@ body,
   cursor: not-allowed;
 }
 
+.btn-red {
+  background-color: var(--color-red);
+  color: var(--color-white);
+}
+
 .error-msj {
   color: var(--color-red);
   font-size: var(--ff-300);

@@ -1,10 +1,50 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import { onValue, ref as refDB } from "firebase/database";
+import { onValue, ref as refDB, remove } from "firebase/database";
 import { db } from "../../utilidades/firebase";
+import { signOut } from "firebase/auth";
+import { auth } from "../../utilidades/firebase";
+import { storage } from "../../utilidades/firebase";
+import { ref as refST, deleteObject } from "firebase/storage";
 
-export default function PasoCuatro({ setPasos, userUID }) {
+export default function PasoCuatro({ setPasos, userUID, setUserUID, form }) {
   const [userData, setUserData] = useState({});
+  const [error, setError] = useState("");
+
+  function handleLoguear() {
+    signOut(auth)
+      .then(() => {
+        setPasos("inicio");
+        setUserUID("");
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  }
+
+  // const imagesRef = refST(storageRef, `/${uidState}`);
+  // const fileRef = refST(imagesRef, form.imagenName);
+  // deleteObject(fileRef).then(
+  //   setForm((oldData) => ({
+  //     ...oldData,
+  //     imageUrl: "",
+  //     imagenName: "",
+  //   }))
+  // );
+
+  function handleBorrarTodo() {
+    remove(refDB(db, `/${userUID}`))
+      .then(() => {
+        const userRef = refST(storage, `/${userUID}`);
+        const cvRef = refST(userRef, form.fileName);
+        deleteObject(cvRef).then(() => {
+          handleLoguear();
+        });
+      })
+      .catch((error) => {
+        setError(error.message);
+      });
+  }
 
   useEffect(() => {
     const cancelOnValue = onValue(
@@ -34,6 +74,10 @@ export default function PasoCuatro({ setPasos, userUID }) {
           llover fuerte y pueda usar una sombrilla ya que la inundación no le
           deja conducir hasta la oficina. Mientras tanto puedes ir a la playa...
         </p>
+        <button onClick={handleLoguear} className="btn-green">
+          Salir
+        </button>
+        {error && <p className="error-msj">{error}</p>}
       </div>
       <div className="pasos-derecho">
         <p className="usuario-data-titulo">Ofertas solicitadas:</p>
@@ -56,8 +100,10 @@ export default function PasoCuatro({ setPasos, userUID }) {
         <p className="usuario-data-value">
           {userData?.eresResistente ? "Si" : "No"}
         </p>
-        <button className="btn-green">Salir</button>
-        <button className="btn-green">Borrar tus datos</button>
+
+        <button onClick={handleBorrarTodo} className="btn-red btn-green">
+          Borrar tus datos y cerrar la cuenta
+        </button>
       </div>
     </div>
   );
