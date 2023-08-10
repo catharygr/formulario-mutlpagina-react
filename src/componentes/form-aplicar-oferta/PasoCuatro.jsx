@@ -2,12 +2,18 @@
 import { useEffect, useState } from "react";
 import { onValue, ref as refDB, remove } from "firebase/database";
 import { db } from "../../utilidades/firebase";
-import { signOut } from "firebase/auth";
+import { signOut, deleteUser } from "firebase/auth";
 import { auth } from "../../utilidades/firebase";
 import { storage } from "../../utilidades/firebase";
 import { ref as refST, deleteObject } from "firebase/storage";
 
-export default function PasoCuatro({ setPasos, userUID, setUserUID, form }) {
+export default function PasoCuatro({
+  setPasos,
+  userUID,
+  setUserUID,
+  form,
+  setForm,
+}) {
   const [userData, setUserData] = useState({});
   const [error, setError] = useState("");
 
@@ -22,23 +28,28 @@ export default function PasoCuatro({ setPasos, userUID, setUserUID, form }) {
       });
   }
 
-  // const imagesRef = refST(storageRef, `/${uidState}`);
-  // const fileRef = refST(imagesRef, form.imagenName);
-  // deleteObject(fileRef).then(
-  //   setForm((oldData) => ({
-  //     ...oldData,
-  //     imageUrl: "",
-  //     imagenName: "",
-  //   }))
-  // );
-
   function handleBorrarTodo() {
     remove(refDB(db, `/${userUID}`))
       .then(() => {
         const userRef = refST(storage, `/${userUID}`);
         const cvRef = refST(userRef, form.fileName);
         deleteObject(cvRef).then(() => {
-          handleLoguear();
+          deleteUser(auth.currentUser).then(() => {
+            setPasos("inicio");
+            setUserUID("");
+            setForm({
+              trabajoSolicitado: [],
+              email: "",
+              password: "",
+              nombre: "",
+              telef: "",
+              experiencias: "",
+              habilidades: "",
+              eresResistente: false,
+              fileUrl: "",
+              fileName: "",
+            });
+          });
         });
       })
       .catch((error) => {

@@ -85,6 +85,7 @@ export default function OfertasTrabajo() {
             userUID={userUID}
             setUserUID={setUserUID}
             form={form}
+            setForm={setForm}
           />
         )}
       </div>
