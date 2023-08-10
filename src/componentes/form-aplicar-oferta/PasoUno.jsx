@@ -105,7 +105,7 @@ export default function PasoUno({ handleForm, form, setPasos, setUserUID }) {
           />
 
           <button disabled={btnDesabilitado} className="btn-green">
-            Continuar
+            Abrir cuenta
           </button>
           {errorMensaje && <p className="error-msj">{errorMensaje}</p>}
         </form>

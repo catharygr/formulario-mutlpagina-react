@@ -1,5 +1,5 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
-
+/* eslint-disable react/prop-types */
+import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../utilidades/firebase";
 import { useState } from "react";
 
@@ -15,6 +15,16 @@ export default function Loguear({ setPasos, setUserUID }) {
   // Funcion para loguear o registrarse
   function handleSubmit(e) {
     e.preventDefault();
+    signInWithEmailAndPassword(auth, form.email, form.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        setUserUID(user.uid);
+        setPasos("paso-cuatro");
+      })
+      .catch((error) => {
+        const errorMessage = error.message;
+        setErrorMensaje(errorMessage);
+      });
   }
 
   function handleChangeForm(e) {
@@ -76,7 +86,7 @@ export default function Loguear({ setPasos, setUserUID }) {
           />
 
           <button disabled={btnDesabilitado} className="btn-green">
-            Continuar
+            Loguear y aplicar oferta
           </button>
           {errorMensaje && <p className="error-msj">{errorMensaje}</p>}
         </form>

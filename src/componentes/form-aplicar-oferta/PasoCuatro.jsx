@@ -22,6 +22,18 @@ export default function PasoCuatro({
       .then(() => {
         setPasos("inicio");
         setUserUID("");
+        setForm({
+          trabajoSolicitado: [],
+          email: "",
+          password: "",
+          nombre: "",
+          telef: "",
+          experiencias: "",
+          habilidades: "",
+          eresResistente: false,
+          fileUrl: "",
+          fileName: "",
+        });
       })
       .catch((error) => {
         setError(error.message);
