@@ -20,16 +20,26 @@ export default function Header() {
             <Drawer handleCerrarMenu={esSetMenuAbierto}>
               <ul className="nav-lista">
                 <li>
-                  <a href="">Mi portafolio</a>
+                  <a href="https://bubulazi.com">Mi portafolio</a>
                 </li>
                 <li>
-                  <a href="">LinkedIn</a>
+                  <a href="https://www.linkedin.com/in/hyuik">LinkedIn</a>
                 </li>
                 <li>
-                  <a href="">Contactos</a>
+                  <a href="https://bubulazi.com/#form">Contacto</a>
                 </li>
                 <li>
-                  <p></p>
+                  <a href="https://github.com/catharygr">GitHub</a>
+                </li>
+                <li>
+                  <p className="acerca-app">
+                    Esta aplicación sirve como un proyecto de ejercicio con el
+                    propósito de construir un formulario de varias páginas con
+                    autenticación en Firebase, almacenamiento y la integración
+                    de una base de datos como infraestructura backend.
+                    Básicamente, simula el proceso de solicitud para una oferta
+                    de trabajo.
+                  </p>
                 </li>
               </ul>
             </Drawer>
