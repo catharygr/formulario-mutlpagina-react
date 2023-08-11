@@ -8,8 +8,8 @@ import PasoCuatro from "./form-aplicar-oferta/PasoCuatro";
 import Loguear from "./form-aplicar-oferta/Loguear";
 
 export default function OfertasTrabajo() {
-  // inicio, paso-uno, paso-dos, paso-tres, paso-cuatro, loguear
-  const [pasos, setPasos] = useState("inicio");
+  // inicio, paso-uno, paso-dos, paso-tres, paso-cuatro, loguear, confirmar-oferta
+  const [pasos, setPasos] = useState("confirmar-oferta");
   const [form, setForm] = useState({
     trabajoSolicitado: [],
     email: "",
@@ -90,6 +90,13 @@ export default function OfertasTrabajo() {
           />
         )}
         {pasos === "loguear" && (
+          <Loguear
+            setPasos={setPasos}
+            userUID={userUID}
+            setUserUID={setUserUID}
+          />
+        )}
+        {pasos === "confirmar-oferta" && (
           <Loguear
             setPasos={setPasos}
             userUID={userUID}
