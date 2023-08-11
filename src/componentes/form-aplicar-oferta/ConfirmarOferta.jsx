@@ -21,10 +21,28 @@ export default function PasoCuatro({
   const findOferta = data.find((oferta) => {
     return oferta.id === form.trabajoSolicitado[0];
   });
-  console.log(findOferta);
+
   function handleAplicar() {
     console.log(form.trabajoSolicitado);
   }
+
+  useEffect(() => {
+    const cancelOnValue = onValue(
+      refDB(db, `/${userUID}`),
+      function (snapshot) {
+        if (snapshot.val()) {
+          const todosData = Object.entries(snapshot.val());
+          const data = todosData[0][1];
+          setUserData(data);
+        } else {
+          setUserData({});
+        }
+      }
+    );
+    return cancelOnValue;
+  }, [userUID]);
+
+  console.log(userData);
 
   return (
     <div className="pasos-container">

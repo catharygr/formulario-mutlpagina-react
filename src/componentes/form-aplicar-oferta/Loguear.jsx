@@ -10,7 +10,6 @@ export default function Loguear({ setPasos, setUserUID }) {
     email: "",
     password: "",
   });
-  console.log(form);
 
   // Funcion para loguear o registrarse
   function handleSubmit(e) {

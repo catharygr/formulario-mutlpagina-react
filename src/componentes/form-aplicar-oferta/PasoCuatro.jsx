@@ -79,8 +79,6 @@ export default function PasoCuatro({ setPasos, userUID, setUserUID, setForm }) {
     return cancelOnValue;
   }, [userUID]);
 
-  console.log(userData);
-
   return (
     <div className="pasos-container">
       <div className="pasos-izquierdo">
