@@ -19,7 +19,7 @@ export default function Loguear({ setPasos, setUserUID }) {
       .then((userCredential) => {
         const user = userCredential.user;
         setUserUID(user.uid);
-        setPasos("paso-cuatro");
+        setPasos("confirmar-oferta");
       })
       .catch((error) => {
         const errorMessage = error.message;
@@ -52,7 +52,7 @@ export default function Loguear({ setPasos, setUserUID }) {
     <div className="pasos-container">
       <div className="pasos-izquierdo">
         <div>
-          <h2>{"Paso uno:"}</h2>
+          <h2>{"Paso dos: 2/4"}</h2>
           <h3>Loguea aquí</h3>
         </div>
 

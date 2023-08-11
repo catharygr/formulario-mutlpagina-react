@@ -6,121 +6,50 @@ import { signOut, deleteUser } from "firebase/auth";
 import { auth } from "../../utilidades/firebase";
 import { storage } from "../../utilidades/firebase";
 import { ref as refST, deleteObject } from "firebase/storage";
+import { data } from "../../assets/data";
 
-export default function PasoCuatro({ setPasos, userUID, setUserUID, setForm }) {
+export default function PasoCuatro({
+  setPasos,
+  userUID,
+  setUserUID,
+  setForm,
+  form,
+}) {
   const [userData, setUserData] = useState({});
   const [error, setError] = useState("");
 
-  function handleLoguear() {
-    signOut(auth)
-      .then(() => {
-        setPasos("inicio");
-        setUserUID("");
-        setForm({
-          trabajoSolicitado: [],
-          email: "",
-          password: "",
-          nombre: "",
-          telef: "",
-          experiencias: "",
-          habilidades: "",
-          eresResistente: false,
-          fileUrl: "",
-          fileName: "",
-        });
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
+  const findOferta = data.find((oferta) => {
+    return oferta.id === form.trabajoSolicitado[0];
+  });
+  console.log(findOferta);
+  function handleAplicar() {
+    console.log(form.trabajoSolicitado);
   }
-
-  function handleBorrarTodo() {
-    remove(refDB(db, `/${userUID}`))
-      .then(() => {
-        const userRef = refST(storage, `/${userUID}`);
-        const cvRef = refST(userRef, userData.fileName);
-        deleteObject(cvRef).then(() => {
-          deleteUser(auth.currentUser).then(() => {
-            setPasos("inicio");
-            setUserUID("");
-            setForm({
-              trabajoSolicitado: [],
-              email: "",
-              password: "",
-              nombre: "",
-              telef: "",
-              experiencias: "",
-              habilidades: "",
-              eresResistente: false,
-              fileUrl: "",
-              fileName: "",
-            });
-          });
-        });
-      })
-      .catch((error) => {
-        setError(error.message);
-      });
-  }
-
-  useEffect(() => {
-    const cancelOnValue = onValue(
-      refDB(db, `/${userUID}`),
-      function (snapshot) {
-        if (snapshot.val()) {
-          const todosData = Object.entries(snapshot.val());
-          const data = todosData[0][1];
-          setUserData(data);
-        } else {
-          setUserData({});
-        }
-      }
-    );
-    return cancelOnValue;
-  }, [userUID]);
-
-  console.log(userData);
 
   return (
     <div className="pasos-container">
       <div className="pasos-izquierdo">
-        <h2>{"Aplicación a la oferta: (4/4)"}</h2>
-        <h3> Has aplicado correctamente a la oferta. Suerte!</h3>
+        <h2>{"Paso tres: 3/4"}</h2>
+        <h3>
+          ¿Estás seguro 100% que quieres aplicar a esta oferta de trabajo?
+        </h3>
         <p>
-          El reclutador se pondrá en contacto contigo nada más que deje de
-          llover fuerte y pueda usar una sombrilla ya que la inundación no le
-          deja conducir hasta la oficina. Mientras tanto puedes ir a la playa...
+          Nuestro reclutador se pondrá en contacto contigo si eres seleccionado.
         </p>
-        <button onClick={handleLoguear} className="btn-green">
-          Salir
+        <button onClick={handleAplicar} className="btn-green">
+          Aplicar a esta oferta
         </button>
         {error && <p className="error-msj">{error}</p>}
       </div>
       <div className="pasos-derecho">
-        <p className="usuario-data-titulo">Ofertas solicitadas:</p>
-        <p className="usuario-data-value">{userData?.trabajoSolicitado}</p>
-        <p className="usuario-data-titulo">Nombre:</p>
-        <p className="usuario-data-value">{userData?.nombre}</p>
-        <p className="usuario-data-titulo">Email:</p>
-        <p className="usuario-data-value">{userData?.email}</p>
-        <p className="usuario-data-titulo">Telef:</p>
-        <p className="usuario-data-value">{userData?.telef}</p>
-        <p className="usuario-data-titulo">Experiencias:</p>
-        <p className="usuario-data-value">{userData?.experiencias}</p>
-        <p className="usuario-data-titulo">CV:</p>
-        <p className="usuario-data-value">{userData?.fileName}</p>
-        <p className="usuario-data-titulo">Password:</p>
-        <p className="usuario-data-value">{userData?.password}</p>
-        <p className="usuario-data-titulo">Habilidades:</p>
-        <p className="usuario-data-value">{userData?.habilidades}</p>
-        <p className="usuario-data-titulo">Resistente al agua:</p>
-        <p className="usuario-data-value">
-          {userData?.eresResistente ? "Si" : "No"}
-        </p>
-
-        <button onClick={handleBorrarTodo} className="btn-red btn-green">
-          Borrar tus datos y cerrar la cuenta
-        </button>
+        <p className="usuario-data-titulo">ID de Oferta:</p>
+        <p className="usuario-data-value">{findOferta?.id}</p>
+        <p className="usuario-data-titulo">Titulo:</p>
+        <p className="usuario-data-value">{findOferta?.title}</p>
+        <p className="usuario-data-titulo">Descripción:</p>
+        <p className="usuario-data-value">{findOferta?.description}</p>
+        <p className="usuario-data-titulo">Salario:</p>
+        <p className="usuario-data-value">{findOferta?.salary}</p>
       </div>
     </div>
   );
