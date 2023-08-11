@@ -107,8 +107,6 @@ export default function PasoCuatro({ setPasos, userUID, setUserUID, setForm }) {
         <p className="usuario-data-value">{userData?.experiencias}</p>
         <p className="usuario-data-titulo">CV:</p>
         <p className="usuario-data-value">{userData?.fileName}</p>
-        <p className="usuario-data-titulo">Password:</p>
-        <p className="usuario-data-value">{userData?.password}</p>
         <p className="usuario-data-titulo">Habilidades:</p>
         <p className="usuario-data-value">{userData?.habilidades}</p>
         <p className="usuario-data-titulo">Resistente al agua:</p>

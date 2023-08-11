@@ -1,21 +1,13 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import { onValue, ref as refDB, remove } from "firebase/database";
+import { onValue, ref as refDB, update } from "firebase/database";
 import { db } from "../../utilidades/firebase";
-import { signOut, deleteUser } from "firebase/auth";
-import { auth } from "../../utilidades/firebase";
-import { storage } from "../../utilidades/firebase";
-import { ref as refST, deleteObject } from "firebase/storage";
+
 import { data } from "../../assets/data";
 
-export default function PasoCuatro({
-  setPasos,
-  userUID,
-  setUserUID,
-  setForm,
-  form,
-}) {
+export default function PasoCuatro({ setPasos, userUID, form }) {
   const [userData, setUserData] = useState({});
+  const [dataID, setDataID] = useState("");
   const [error, setError] = useState("");
 
   const findOferta = data.find((oferta) => {
@@ -23,7 +15,16 @@ export default function PasoCuatro({
   });
 
   function handleAplicar() {
-    console.log(form.trabajoSolicitado);
+    const nuevasOfertas = [
+      ...userData.trabajoSolicitado,
+      ...form.trabajoSolicitado,
+    ];
+    const nuevaData = { ...userData, trabajoSolicitado: nuevasOfertas };
+    update(refDB(db, `/${userUID}/${dataID}`), nuevaData)
+      .then(setPasos("paso-cuatro"))
+      .catch((error) => {
+        setError(error.message);
+      });
   }
 
   useEffect(() => {
@@ -33,6 +34,8 @@ export default function PasoCuatro({
         if (snapshot.val()) {
           const todosData = Object.entries(snapshot.val());
           const data = todosData[0][1];
+          const dataID = todosData[0][0];
+          setDataID(dataID);
           setUserData(data);
         } else {
           setUserData({});
@@ -41,8 +44,6 @@ export default function PasoCuatro({
     );
     return cancelOnValue;
   }, [userUID]);
-
-  console.log(userData);
 
   return (
     <div className="pasos-container">
