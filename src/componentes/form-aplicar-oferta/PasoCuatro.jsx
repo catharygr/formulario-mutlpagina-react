@@ -17,18 +17,6 @@ export default function PasoCuatro({ setPasos, userUID, setUserUID, setForm }) {
       .then(() => {
         setPasos("inicio");
         setUserUID("");
-        setForm({
-          trabajoSolicitado: [],
-          email: "",
-          password: "",
-          nombre: "",
-          telef: "",
-          experiencias: "",
-          habilidades: "",
-          eresResistente: false,
-          fileUrl: "",
-          fileName: "",
-        });
       })
       .catch((error) => {
         setError(error.message);
@@ -45,18 +33,6 @@ export default function PasoCuatro({ setPasos, userUID, setUserUID, setForm }) {
           deleteUser(auth.currentUser).then(() => {
             setPasos("inicio");
             setUserUID("");
-            setForm({
-              trabajoSolicitado: [],
-              email: "",
-              password: "",
-              nombre: "",
-              telef: "",
-              experiencias: "",
-              habilidades: "",
-              eresResistente: false,
-              fileUrl: "",
-              fileName: "",
-            });
           });
         });
       })
@@ -74,14 +50,28 @@ export default function PasoCuatro({ setPasos, userUID, setUserUID, setForm }) {
           const todosData = Object.entries(snapshot.val());
           const data = todosData[0][1];
           setUserData(data);
+          setForm({
+            trabajoSolicitado: [],
+            email: "",
+            password: "",
+            nombre: "",
+            telef: "",
+            experiencias: "",
+            habilidades: "",
+            eresResistente: false,
+            fileUrl: "",
+            fileName: "",
+          });
         } else {
           setUserData({});
         }
       }
     );
+
     return cancelOnValue;
   }, [userUID]);
 
+  console.log(userData);
   return (
     <div className="pasos-container">
       <div className="pasos-izquierdo">

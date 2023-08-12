@@ -14,7 +14,6 @@ export default function OfertasTrabajo() {
   const [form, setForm] = useState({
     trabajoSolicitado: [],
     email: "",
-    password: "",
     nombre: "",
     telef: "",
     experiencias: "",

@@ -11,6 +11,7 @@ const dataAcordeon = {
 };
 
 export default function PasoUno({ handleForm, form, setPasos, setUserUID }) {
+  const [password, setPassword] = useState("");
   const [repetirPassword, setRepetirPassword] = useState("");
   const [btnDesabilitado, setBtnDesabilitado] = useState(true);
   const [errorMensaje, setErrorMensaje] = useState("");
@@ -18,7 +19,7 @@ export default function PasoUno({ handleForm, form, setPasos, setUserUID }) {
   // Funcion para  registrarse
   function handleSubmit(e) {
     e.preventDefault();
-    createUserWithEmailAndPassword(auth, form.email, form.password)
+    createUserWithEmailAndPassword(auth, form.email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         setUserUID(user.uid);
@@ -31,12 +32,12 @@ export default function PasoUno({ handleForm, form, setPasos, setUserUID }) {
     return;
   }
 
-  if (form.password === repetirPassword && btnDesabilitado) {
-    if (form.email && form.password && repetirPassword) {
+  if (password === repetirPassword && btnDesabilitado) {
+    if (form.email && password && repetirPassword) {
       setBtnDesabilitado(false);
     }
   }
-  if (form.password !== repetirPassword && !btnDesabilitado) {
+  if (password !== repetirPassword && !btnDesabilitado) {
     setBtnDesabilitado(true);
   }
 
@@ -78,8 +79,8 @@ export default function PasoUno({ handleForm, form, setPasos, setUserUID }) {
             name="password"
             id="password"
             min={8}
-            value={form.password}
-            onChange={handleForm}
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
           />
           <label htmlFor="confirmar-password">
             Confirmar password:{" "}
@@ -88,7 +89,7 @@ export default function PasoUno({ handleForm, form, setPasos, setUserUID }) {
                 className="label-span"
                 style={{ color: "var(--color-orange)" }}
               >
-                {form.password !== repetirPassword || !repetirPassword
+                {password !== repetirPassword || !repetirPassword
                   ? "Las contraseñas no coinciden"
                   : "Las contraseñas coinciden"}
               </span>
