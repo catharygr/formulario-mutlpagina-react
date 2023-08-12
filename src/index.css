@@ -344,14 +344,14 @@ header {
 
 .ofertas-trabajo-container {
   align-self: center;
-  margin: 3rem 3vw 1rem;
+  margin: 1.5rem 3vw 1rem;
   width: 90vw;
   max-width: 87rem;
 }
 
 .ofertas-trabajo-titulo-movil {
-  font-weight: 900;
-  font-size: var(--ff-900);
+  font-weight: 800;
+  font-size: var(--ff-800);
   color: var(--color-orange);
   text-align: right;
   text-shadow: 5px 5px 0px var(--color-shadow);
@@ -379,6 +379,10 @@ header {
 
 /* Estilos para pantallas grandes (mayor a 768px, puedes ajustar este valor según tus necesidades) */
 @media (min-width: 40rem) {
+  .ofertas-trabajo-container {
+    margin: 3rem 3vw 1rem;
+  }
+
   .ofertas-trabajo-titulo-movil {
     display: none; /* Oculta el título "Ofertas" en pantallas grandes */
   }

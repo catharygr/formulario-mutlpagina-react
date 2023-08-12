@@ -1,6 +1,6 @@
 import { data } from "../assets/data";
 import TarjetaTrabajo from "./TarjetaTrabajo";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PasoUno from "./form-aplicar-oferta/PasoUno";
 import PasoDos from "./form-aplicar-oferta/PasoDos";
 import PasoTres from "./form-aplicar-oferta/PasoTres";
@@ -48,6 +48,14 @@ export default function OfertasTrabajo() {
       aplicarOferta={handleAplicar}
     />
   ));
+  // Scroll to top
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      left: 0,
+      behavior: "smooth",
+    });
+  }, [pasos]);
 
   return (
     <main className="ofertas-trabajo-container">
