@@ -9,6 +9,7 @@ export default function PasoCuatro({ setPasos, userUID, form }) {
   const [userData, setUserData] = useState({});
   const [dataID, setDataID] = useState("");
   const [error, setError] = useState("");
+  const [ofertaDuplicada, setOfertaDuplicada] = useState(false);
 
   const findOferta = data.find((oferta) => {
     return oferta.id === form.trabajoSolicitado[0];
@@ -37,6 +38,13 @@ export default function PasoCuatro({ setPasos, userUID, form }) {
           const todosData = Object.entries(snapshot.val());
           const data = todosData[0][1];
           const dataID = todosData[0][0];
+
+          const duplicada = data.trabajoSolicitado.some((oferta) => {
+            return oferta === form.trabajoSolicitado[0];
+          });
+
+          setOfertaDuplicada(duplicada);
+
           setDataID(dataID);
           setUserData(data);
         } else {

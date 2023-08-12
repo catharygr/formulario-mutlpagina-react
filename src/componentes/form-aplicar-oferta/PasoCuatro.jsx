@@ -71,7 +71,13 @@ export default function PasoCuatro({ setPasos, userUID, setUserUID, setForm }) {
     return cancelOnValue;
   }, [userUID]);
 
-  console.log(userData);
+  // mapeo
+  const solicitarOfertaMapeo = userData?.trabajoSolicitado?.map((oferta) => (
+    <button className="btn-trabajo-solicitado" key={Math.random()}>
+      {oferta}
+    </button>
+  ));
+
   return (
     <div className="pasos-container">
       <div className="pasos-izquierdo">
@@ -89,7 +95,8 @@ export default function PasoCuatro({ setPasos, userUID, setUserUID, setForm }) {
       </div>
       <div className="pasos-derecho">
         <p className="usuario-data-titulo">Ofertas solicitadas:</p>
-        <p className="usuario-data-value">{userData?.trabajoSolicitado}</p>
+        {/* <p className="usuario-data-value">{userData?.trabajoSolicitado}</p> */}
+        {solicitarOfertaMapeo}
         <p className="usuario-data-titulo">Nombre:</p>
         <p className="usuario-data-value">{userData?.nombre}</p>
         <p className="usuario-data-titulo">Email:</p>
