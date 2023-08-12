@@ -14,6 +14,7 @@ export default function PasoCuatro({ setPasos, userUID, form }) {
     return oferta.id === form.trabajoSolicitado[0];
   });
 
+  // Función para manejar el botón de aplicar oferta
   function handleAplicar() {
     const nuevasOfertas = [
       ...userData.trabajoSolicitado,
@@ -27,6 +28,7 @@ export default function PasoCuatro({ setPasos, userUID, form }) {
       });
   }
 
+  // UseEffect para traer los datos del usuario
   useEffect(() => {
     const cancelOnValue = onValue(
       refDB(db, `/${userUID}`),

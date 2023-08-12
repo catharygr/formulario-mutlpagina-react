@@ -25,6 +25,7 @@ export default function OfertasTrabajo() {
   });
   const [userUID, setUserUID] = useState("");
 
+  // Función para manejar el formulario
   function handleForm(e) {
     const { name, value, checked, type } = e.target;
     setForm({
@@ -33,6 +34,7 @@ export default function OfertasTrabajo() {
     });
   }
 
+  // Función para manejar el botón de aplicar oferta
   function handleAplicar(ofertaId) {
     setPasos("paso-uno");
     setForm({
@@ -41,6 +43,7 @@ export default function OfertasTrabajo() {
     });
   }
 
+  // Mapeo de las ofertas de trabajo
   const tarjetaTrabajoMapeo = data.map((oferta) => (
     <TarjetaTrabajo
       key={oferta.id}

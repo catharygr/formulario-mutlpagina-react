@@ -11,6 +11,7 @@ export default function PasoCuatro({ setPasos, userUID, setUserUID, setForm }) {
   const [userData, setUserData] = useState({});
   const [error, setError] = useState("");
 
+  // Función para loguear
   function handleLoguear() {
     signOut(auth)
       .then(() => {
@@ -34,6 +35,7 @@ export default function PasoCuatro({ setPasos, userUID, setUserUID, setForm }) {
       });
   }
 
+  // Función para borrar todo
   function handleBorrarTodo() {
     remove(refDB(db, `/${userUID}`))
       .then(() => {
@@ -63,6 +65,7 @@ export default function PasoCuatro({ setPasos, userUID, setUserUID, setForm }) {
       });
   }
 
+  // UseEffect para traer los datos del usuario
   useEffect(() => {
     const cancelOnValue = onValue(
       refDB(db, `/${userUID}`),

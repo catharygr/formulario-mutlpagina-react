@@ -8,6 +8,7 @@ const dataAcordeon = {
 };
 
 export default function PasoDos({ handleForm, form, setPasos }) {
+  // Función para manejar el formulario
   function handleSubmit(e) {
     e.preventDefault();
     setPasos("paso-tres");

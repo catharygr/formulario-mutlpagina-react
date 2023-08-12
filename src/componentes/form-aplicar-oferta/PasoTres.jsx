@@ -26,7 +26,7 @@ export default function PasoTres({
     e.preventDefault();
     push(refDB(db, `${userUID}`), form).then(setPasos("paso-cuatro"));
   }
-
+  // Función para seleccionar el CV
   function handleCvSeleccionado(e) {
     const cv = e.target.files[0];
     setCvSeleccionado(cv);
