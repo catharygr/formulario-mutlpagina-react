@@ -68,6 +68,7 @@ export default function OfertasTrabajo() {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         setEstaLogueado(true);
+        setUserUID(user.uid);
       } else {
         setEstaLogueado(false);
       }
