@@ -469,6 +469,23 @@ header {
   font-weight: 700;
 }
 
+.paso-izquierdo-oferta-duplicada {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: var(--color-white);
+  margin-top: 2rem;
+}
+
+.paso-izquierdo-oferta-duplicada a {
+  text-decoration: underline;
+  text-decoration-thickness: 0.2rem;
+  text-underline-offset: 0.3rem;
+  text-decoration-color: var(--color-orange);
+  font-weight: 700;
+}
+
 .pasos-peque {
   font-size: var(--ff-300);
 }
@@ -562,6 +579,13 @@ textarea {
 @media (min-width: 40rem) {
   .pasos-container {
     grid-template-columns: repeat(2, 1fr);
+  }
+  .paso-izquierdo-oferta-duplicada {
+    display: flex;
+    flex-direction: row;
+    margin-top: 3rem;
+    justify-content: space-between;
+    color: var(--color-white);
   }
 }
 

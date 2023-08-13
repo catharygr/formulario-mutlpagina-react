@@ -12,6 +12,8 @@ export default function PasoCuatro({ setPasos, userUID, form }) {
   const [error, setError] = useState("");
   const [ofertaDuplicada, setOfertaDuplicada] = useState(false);
 
+  console.log(ofertaDuplicada);
+
   const findOferta = data.find((oferta) => {
     return oferta.id === form.trabajoSolicitado[0];
   });
@@ -60,15 +62,40 @@ export default function PasoCuatro({ setPasos, userUID, form }) {
     <div className="pasos-container">
       <div className="pasos-izquierdo">
         <h2>{"Paso tres: 3/4"}</h2>
-        <h3>
-          ¿Estás seguro 100% que quieres aplicar a esta oferta de trabajo?
-        </h3>
-        <p>
-          Nuestro reclutador se pondrá en contacto contigo si eres seleccionado.
-        </p>
-        <button onClick={handleAplicar} className="btn-green">
-          Aplicar a esta oferta
-        </button>
+        {/* Oferta duplicada */}
+        {ofertaDuplicada && (
+          <>
+            <h3>
+              Ooopp parece que has aplicado a esta oferta de trabajo
+              anteriormente.
+            </h3>
+            <p>Sólo puedes aplicar una vez a cada oferta de trabajo.</p>
+            <p>Para continuar eleige una de la demás opciones.</p>
+            <div className="paso-izquierdo-oferta-duplicada">
+              <a onClick={() => handleAplicar("inicio")}>
+                Regresar a las ofertas
+              </a>
+              <a onClick={() => handleAplicar("paso-cuatro")}>
+                Continuar en tu cuenta
+              </a>
+            </div>
+          </>
+        )}
+        {/* Oferta No duplicada */}
+        {!ofertaDuplicada && (
+          <>
+            <h3>
+              ¿Estás seguro 100% que quieres aplicar a esta oferta de trabajo?
+            </h3>
+            <p>
+              Nuestro reclutador se pondrá en contacto contigo si eres
+              seleccionado.
+            </p>
+            <button onClick={handleAplicar} className="btn-green">
+              Aplicar a esta oferta
+            </button>
+          </>
+        )}
         {error && <p className="error-msj">{error}</p>}
       </div>
       <div className="pasos-derecho">
