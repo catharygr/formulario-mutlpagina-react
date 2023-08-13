@@ -72,10 +72,13 @@ export default function PasoCuatro({ setPasos, userUID, form }) {
             <p>Sólo puedes aplicar una vez a cada oferta de trabajo.</p>
             <p>Para continuar eleige una de la demás opciones.</p>
             <div className="paso-izquierdo-oferta-duplicada">
-              <a onClick={() => handleAplicar("inicio")}>
+              <a className="enlace-naranaja" onClick={() => setPasos("inicio")}>
                 Regresar a las ofertas
               </a>
-              <a onClick={() => handleAplicar("paso-cuatro")}>
+              <a
+                className="enlace-naranaja"
+                onClick={() => setPasos("paso-cuatro")}
+              >
                 Continuar en tu cuenta
               </a>
             </div>

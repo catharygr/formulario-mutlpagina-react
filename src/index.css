@@ -194,6 +194,19 @@ body,
   cursor: not-allowed;
 }
 
+.btn-orange {
+  font-weight: 700;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--color-orange);
+  color: var(--color-black);
+  cursor: pointer;
+  text-align: center;
+  transition: scale 0.2s ease-in-out;
+  margin-top: 2rem;
+}
+
 .btn-red {
   background-color: var(--color-red);
   color: var(--color-white);
@@ -478,12 +491,13 @@ header {
   margin-top: 2rem;
 }
 
-.paso-izquierdo-oferta-duplicada a {
+.enlace-naranaja {
   text-decoration: underline;
   text-decoration-thickness: 0.2rem;
   text-underline-offset: 0.3rem;
   text-decoration-color: var(--color-orange);
   font-weight: 700;
+  cursor: pointer;
 }
 
 .pasos-peque {

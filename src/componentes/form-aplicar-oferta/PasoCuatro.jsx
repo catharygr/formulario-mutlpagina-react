@@ -88,7 +88,12 @@ export default function PasoCuatro({ setPasos, userUID, setUserUID, setForm }) {
           llover fuerte y pueda usar una sombrilla ya que la inundación no le
           deja conducir hasta la oficina. Mientras tanto puedes ir a la playa...
         </p>
-        <button onClick={handleLoguear} className="btn-green">
+        <a className="enlace-naranaja" onClick={() => setPasos("inicio")}>
+          {" "}
+          Regresar a las ofertas
+        </a>{" "}
+        <br />
+        <button onClick={handleLoguear} className="btn-orange">
           Salir
         </button>
         {error && <p className="error-msj">{error}</p>}
