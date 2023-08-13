@@ -1,4 +1,6 @@
 import { data } from "../assets/data";
+import { auth } from "../utilidades/firebase";
+import { onAuthStateChanged } from "firebase/auth";
 import TarjetaTrabajo from "./TarjetaTrabajo";
 import { useEffect, useState } from "react";
 import PasoUno from "./form-aplicar-oferta/PasoUno";
@@ -23,6 +25,7 @@ export default function OfertasTrabajo() {
     fileName: "",
   });
   const [userUID, setUserUID] = useState("");
+  const [estaLogueado, setEstaLogueado] = useState(false);
 
   // Función para manejar el formulario
   function handleForm(e) {
@@ -33,9 +36,11 @@ export default function OfertasTrabajo() {
     });
   }
 
+  const redireccionraLogueado = estaLogueado ? "confirmar-oferta" : "paso-uno";
+
   // Función para manejar el botón de aplicar oferta
   function handleAplicar(ofertaId) {
-    setPasos("paso-uno");
+    setPasos(redireccionraLogueado);
     setForm({
       ...form,
       trabajoSolicitado: [...form.trabajoSolicitado, ofertaId],
@@ -58,6 +63,16 @@ export default function OfertasTrabajo() {
       behavior: "smooth",
     });
   }, [pasos]);
+
+  useEffect(() => {
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setEstaLogueado(true);
+      } else {
+        setEstaLogueado(false);
+      }
+    });
+  }, []);
 
   return (
     <main className="ofertas-trabajo-container">
