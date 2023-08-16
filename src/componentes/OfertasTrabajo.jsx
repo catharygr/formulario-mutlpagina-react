@@ -75,16 +75,35 @@ export default function OfertasTrabajo() {
     });
   }, []);
 
+  function handleH1() {
+    switch (pasos) {
+      case "inicio":
+        return <h1>Ofertas de trabajo</h1>;
+      case "paso-uno":
+        return <h1>¡Vamos...!</h1>;
+      case "paso-dos":
+        return <h1>Sobre ti</h1>;
+      case "paso-tres":
+        return <h1>¿Encajarás?</h1>;
+      case "paso-cuatro":
+        return <h1>Tu cuenta</h1>;
+      case "loguear":
+        return <h1>¡Vamos!</h1>;
+      case "confirmar-oferta":
+        return <h1>Confirma...</h1>;
+      default:
+        return <h1>Ofertas</h1>;
+    }
+  }
+
   return (
     <main className="ofertas-trabajo-container">
       {/* Título para dispositivos móviles */}
       <div className="ofertas-trabajo-titulo-movil">
-        {pasos === "inicio" ? <h1>Ofertas</h1> : <h1>Vamos...!</h1>}
+        {pasos === "inicio" ? <h1>Ofertas</h1> : handleH1()}
       </div>
       {/* Título para pantallas grandes */}
-      <div className="ofertas-trabajo-titulo-grande">
-        {pasos === "inicio" ? <h1>Ofertas de trabajo</h1> : <h1>Vamos...!</h1>}
-      </div>
+      <div className="ofertas-trabajo-titulo-grande">{handleH1()}</div>
       <div className="ofertas-trabajo-lista">
         {pasos === "inicio" && tarjetaTrabajoMapeo}
         {pasos === "paso-uno" && (
