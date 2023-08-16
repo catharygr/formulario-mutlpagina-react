@@ -12,8 +12,6 @@ export default function PasoCuatro({ setPasos, userUID, form }) {
   const [error, setError] = useState("");
   const [ofertaDuplicada, setOfertaDuplicada] = useState(false);
 
-  console.log(ofertaDuplicada);
-
   const findOferta = data.find((oferta) => {
     return oferta.id === form.trabajoSolicitado[0];
   });

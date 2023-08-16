@@ -49,7 +49,6 @@ export default function PasoCuatro({ setPasos, userUID, setUserUID, setForm }) {
   function handleOfertaoModal(ofertaId) {
     const ofertaTrabajo = data.find((oferta) => oferta.id === ofertaId);
     setOfertaModal(ofertaTrabajo);
-    console.log(ofertaModal);
   }
 
   // UseEffect para traer los datos del usuario
