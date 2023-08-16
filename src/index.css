@@ -337,6 +337,7 @@ header {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  animation: deslizar 500ms cubic-bezier(0.14, 0.78, 0.36, 1);
 }
 .cerrar-btn {
   display: flex;
@@ -657,6 +658,67 @@ textarea {
 
 .btn-trabajo-solicitado:hover {
   scale: 1.03;
+}
+
+/* OfertaModal en PasoCuatro */
+
+.oferta-modal-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  inset: 0;
+  padding: 16px;
+  z-index: 900;
+}
+
+.oferta-modal-container h2 {
+  font-size: var(--ff-600);
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.oferta-modal-container p {
+  font-size: var(--ff-300);
+  margin-bottom: 1rem;
+}
+
+.oferta-modal-container span {
+  font-size: var(--ff-300);
+  font-weight: 700;
+}
+
+.oferta-modal-fondo {
+  position: absolute;
+  inset: 0;
+  background: hsla(288, 100%, 30%, 0.75);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  animation: transparencia 850ms cubic-bezier(0.14, 0.78, 0.36, 1);
+}
+.oferta-modal-contenido {
+  position: absolute;
+  background-color: var(--color-white);
+  color: var(--color-black);
+  width: min(90vw, 40rem);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  transform: translate(-50%, -50%);
+}
+
+.cerrar-modal-btn {
+  display: flex;
+  align-self: center;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.5rem 1.5rem;
+  cursor: pointer;
+  background-color: var(--color-acentado);
+  color: var(--color-white);
+  border: none;
+  border-radius: 4px;
 }
 
 /* ***************************/

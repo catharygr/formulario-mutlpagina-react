@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import { onValue, ref as refDB, remove } from "firebase/database";
@@ -6,10 +7,13 @@ import { signOut, deleteUser } from "firebase/auth";
 import { auth } from "../../utilidades/firebase";
 import { storage } from "../../utilidades/firebase";
 import { ref as refST, deleteObject } from "firebase/storage";
+import { data } from "../../assets/data";
+import OfertaModal from "./OfertaModal";
 
 export default function PasoCuatro({ setPasos, userUID, setUserUID, setForm }) {
   const [userData, setUserData] = useState({});
   const [error, setError] = useState("");
+  const [ofertaModal, setOfertaModal] = useState(null);
 
   // Función para loguear
   function handleLoguear() {
@@ -39,6 +43,13 @@ export default function PasoCuatro({ setPasos, userUID, setUserUID, setForm }) {
       .catch((error) => {
         setError(error.message);
       });
+  }
+
+  // Función para manejar el modal de la oferta
+  function handleOfertaoModal(ofertaId) {
+    const ofertaTrabajo = data.find((oferta) => oferta.id === ofertaId);
+    setOfertaModal(ofertaTrabajo);
+    console.log(ofertaModal);
   }
 
   // UseEffect para traer los datos del usuario
@@ -73,13 +84,30 @@ export default function PasoCuatro({ setPasos, userUID, setUserUID, setForm }) {
 
   // mapeo
   const solicitarOfertaMapeo = userData?.trabajoSolicitado?.map((oferta) => (
-    <button className="btn-trabajo-solicitado" key={Math.random()}>
+    <button
+      onClick={() => handleOfertaoModal(oferta)}
+      className="btn-trabajo-solicitado"
+      key={Math.random()}
+    >
       {oferta}
     </button>
   ));
 
   return (
     <div className="pasos-container">
+      {ofertaModal && (
+        <OfertaModal handleCerrarMenu={setOfertaModal}>
+          <>
+            <h2>{ofertaModal.title}</h2>
+            <p>
+              <span>Descripción:</span> {ofertaModal.description}
+            </p>
+            <p>
+              <span>Salario:</span> {ofertaModal.salary}
+            </p>
+          </>
+        </OfertaModal>
+      )}
       <div className="pasos-izquierdo">
         <h2>{"Aplicación a la oferta: (4/4)"}</h2>
         <h3> Has aplicado correctamente a la oferta. Suerte!</h3>
