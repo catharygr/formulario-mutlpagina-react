@@ -90,7 +90,7 @@ export default function OfertasTrabajo() {
       case "loguear":
         return <h1>¡Vamos!</h1>;
       case "confirmar-oferta":
-        return <h1>Confirma...</h1>;
+        return <h1>Confirmar...</h1>;
       default:
         return <h1>Ofertas</h1>;
     }
