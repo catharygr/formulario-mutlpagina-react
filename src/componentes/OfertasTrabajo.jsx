@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { data } from "../assets/data";
 import { auth } from "../utilidades/firebase";
 import { onAuthStateChanged } from "firebase/auth";
@@ -10,9 +11,9 @@ import PasoCuatro from "./form-aplicar-oferta/PasoCuatro";
 import Loguear from "./form-aplicar-oferta/Loguear";
 import ConfirmarOferta from "./form-aplicar-oferta/ConfirmarOferta";
 
-export default function OfertasTrabajo() {
+export default function OfertasTrabajo({ pasos, setPasos }) {
   // inicio, paso-uno, paso-dos, paso-tres, paso-cuatro, loguear, confirmar-oferta
-  const [pasos, setPasos] = useState("inicio");
+  // const [pasos, setPasos] = useState("inicio");
   const [form, setForm] = useState({
     trabajoSolicitado: [],
     email: "",
