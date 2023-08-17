@@ -46,7 +46,7 @@ export default function PasoUno({ handleForm, form, setPasos, setUserUID }) {
       <div className="pasos-izquierdo">
         <div>
           <h2>{"Paso uno: (1/4)"}</h2>
-          <h3>Abrir cuenta</h3>
+          <h3>Registrarse</h3>
         </div>
         <Acordeon
           encabezado={dataAcordeon.encabezado}
