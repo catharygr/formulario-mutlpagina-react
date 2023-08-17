@@ -6,7 +6,7 @@ import { db } from "../../utilidades/firebase";
 
 import { data } from "../../assets/data";
 
-export default function PasoCuatro({ setPasos, userUID, form }) {
+export default function PasoCuatro({ setPasos, userUID, form, setForm }) {
   const [userData, setUserData] = useState({});
   const [dataID, setDataID] = useState("");
   const [error, setError] = useState("");
@@ -28,6 +28,22 @@ export default function PasoCuatro({ setPasos, userUID, form }) {
       .catch((error) => {
         setError(error.message);
       });
+  }
+
+  // Función para manejar el enlace de regresar y a adelantar a las ofertas
+  function handleEnlace(donde) {
+    setForm({
+      trabajoSolicitado: [],
+      email: "",
+      nombre: "",
+      telef: "",
+      experiencias: "",
+      habilidades: "",
+      eresResistente: false,
+      fileUrl: "",
+      fileName: "",
+    });
+    setPasos(donde);
   }
 
   // UseEffect para traer los datos del usuario
@@ -68,14 +84,17 @@ export default function PasoCuatro({ setPasos, userUID, form }) {
               anteriormente.
             </h3>
             <p>Sólo puedes aplicar una vez a cada oferta de trabajo.</p>
-            <p>Para continuar eleige una de la demás opciones.</p>
+            <p>Para continuar elige una de la demás opciones.</p>
             <div className="paso-izquierdo-oferta-duplicada">
-              <a className="enlace-naranaja" onClick={() => setPasos("inicio")}>
+              <a
+                className="enlace-naranaja"
+                onClick={() => handleEnlace("inicio")}
+              >
                 Regresar a las ofertas
               </a>
               <a
                 className="enlace-naranaja"
-                onClick={() => setPasos("paso-cuatro")}
+                onClick={() => handleEnlace("paso-cuatro")}
               >
                 Continuar en tu cuenta
               </a>

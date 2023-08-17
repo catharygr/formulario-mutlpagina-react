@@ -148,6 +148,7 @@ export default function OfertasTrabajo({ pasos, setPasos }) {
             userUID={userUID}
             setUserUID={setUserUID}
             form={form}
+            setForm={setForm}
           />
         )}
       </div>
