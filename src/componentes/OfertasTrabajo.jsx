@@ -88,7 +88,7 @@ export default function OfertasTrabajo({ pasos, setPasos }) {
       case "paso-cuatro":
         return <h1>Tu cuenta</h1>;
       case "loguear":
-        return <h1>¡Vamos...q!</h1>;
+        return <h1>¡Vamos...!</h1>;
       case "confirmar-oferta":
         return <h1>Confirmar...</h1>;
       default:
