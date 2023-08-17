@@ -11,8 +11,8 @@ export default function Header({ setPasos }) {
       <div className="header-container">
         <div className="header-logo">
           <Umbrella size={25} color="var(--color-green)" strokeWidth={3} />
-          <a className="enlace-naranaja" onClick={() => setPasos("inicio")}>
-            <span>Weather App</span>
+          <a className="enlace-logo" onClick={() => setPasos("inicio")}>
+            Weather App
           </a>
         </div>
         <nav className="header-menu">

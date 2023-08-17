@@ -285,6 +285,14 @@ header {
   color: var(--color-acentado);
 }
 
+.enlace-logo:hover {
+  text-decoration: underline;
+  text-decoration-thickness: 0.2rem;
+  text-underline-offset: 0.4rem;
+  text-decoration-color: var(--color-acentado);
+  cursor: pointer;
+}
+
 @media (min-width: 40rem) {
   .header-container {
     padding: 1.5rem 2rem;

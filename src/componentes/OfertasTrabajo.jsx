@@ -13,7 +13,6 @@ import ConfirmarOferta from "./form-aplicar-oferta/ConfirmarOferta";
 
 export default function OfertasTrabajo({ pasos, setPasos }) {
   // inicio, paso-uno, paso-dos, paso-tres, paso-cuatro, loguear, confirmar-oferta
-  // const [pasos, setPasos] = useState("inicio");
   const [form, setForm] = useState({
     trabajoSolicitado: [],
     email: "",
