@@ -8,7 +8,7 @@ function App() {
 
   return (
     <div className="app-container">
-      <Header />
+      <Header pasos={pasos} setPasos={setPasos} />
       <OfertasTrabajo pasos={pasos} setPasos={setPasos} />
       <FooterJob />
     </div>

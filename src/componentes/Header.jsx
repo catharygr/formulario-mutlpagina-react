@@ -1,16 +1,19 @@
+/* eslint-disable react/prop-types */
 import { Menu } from "react-feather";
 import { Umbrella } from "react-feather";
 import useToggle from "../utilidades/useToggle";
 import Drawer from "./Drawer";
 
-export default function Header() {
+export default function Header({ setPasos }) {
   const [esMenuAbierto, esSetMenuAbierto] = useToggle(false);
   return (
     <header>
       <div className="header-container">
         <div className="header-logo">
           <Umbrella size={25} color="var(--color-green)" strokeWidth={3} />
-          <span>Weather App</span>
+          <a className="enlace-naranaja" onClick={() => setPasos("inicio")}>
+            <span>Weather App</span>
+          </a>
         </div>
         <nav className="header-menu">
           <button onClick={esSetMenuAbierto} className="menu-btn">
