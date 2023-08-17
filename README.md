@@ -1,31 +1,22 @@
-      Esta aplicación sirve como un proyecto de ejercicio con el
-      propósito de const  ruir un formulario de varias páginas con
-      autenticación en Firebase, almacenamiento y la integración
-      de una base de datos como infraestructura backend.
-      Básicamente, simula el proceso de solicitud para una oferta
-       de trabajo.
+# Aplicación de Ofertas de Trabajo para Meteorólogos
 
-       Características
+Esta aplicación sirve como un proyecto de ejercicio con el
+propósito de construir un formulario de varias páginas con
+autenticación en Firebase, almacenamiento y la integración
+de una base de datos como infraestructura backend.
+Básicamente, simula el proceso de solicitud para una oferta
+de trabajo.
 
-      Inicio de Sesión y Registro: Utiliza Firebase Authentication para permitir que los usuarios se registren e inicien sesión de manera segura. Los usuarios pueden acceder a sus cuentas personalizadas y gestionar su perfil.
+## Características
 
-      Página de Ofertas de Trabajo: Muestra una lista de ofertas de trabajo disponibles para meteorólogos. Los usuarios pueden buscar, filtrar y ordenar las ofertas según diferentes criterios.
+Multipágina y Pasos Progresivos: El formulario se divide en múltiples páginas (pasos) para una entrada de datos organizada y una experiencia de usuario mejorada.
 
-      Detalles de la Oferta: Al hacer clic en una oferta de trabajo, los usuarios pueden ver detalles completos sobre la oferta, incluidos requisitos, descripción del trabajo, ubicación, salario, etc.
+Firebase Authentication: Utiliza Firebase Authentication para registrar y posteriormente autenticar a los usuarios.
 
-      Publicación de Ofertas de Trabajo: Los empleadores autenticados pueden crear y publicar nuevas ofertas de trabajo. Pueden ingresar información detallada sobre la oferta y guardarla en Firebase Realtime Database.
+Almacenamiento en Firebase Realtime Database: Los datos del formulario se almacenan en tiempo real en Firebase Realtime Database para facilitar el acceso y la gestión.
 
-      Subida de Archivos: La función Firebase Storage permite a los empleadores cargar archivos relevantes junto con las ofertas de trabajo, como descripciones adicionales o formularios de solicitud.
+Carga de Archivos con Firebase Storage: Los usuarios pueden cargar archivos CV en pdf junto con la oferta de trabajo.
 
-      Interacción en Tiempo Real: Firebase Realtime Database se utiliza para habilitar la actualización en tiempo real de la lista de ofertas y los detalles cuando se crean nuevas ofertas o cuando se realizan cambios.
+Hooks de React: Hemos utilizado los hooks más comunes de React, como useState, useEffect... para gestionar el estado y la lógica de la aplicación de manera efectiva.
 
-      Estructura del Proyecto
-
-      src/
-      components/: Componentes reutilizables de React.
-      pages/: Páginas principales de la aplicación.
-      hooks/: Hooks personalizados utilizados en la aplicación.
-      firebase/: Configuración de Firebase.
-      assets/: Recursos estáticos como imágenes y estilos.
-
-      https://multipage-form-caty.netlify.app
+Página web: https://multipage-form-caty.netlify.app
