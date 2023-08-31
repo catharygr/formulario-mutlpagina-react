@@ -19,6 +19,8 @@ Carga de Archivos con Firebase Storage: Los usuarios pueden cargar archivos CV e
 
 Hooks de React: Hemos utilizado los hooks más comunes de React, como useState, useEffect... para gestionar el estado y la lógica de la aplicación de manera efectiva.
 
-Las librerias externa que he usado Utlizando
+Las librerias externa que he usado utilizado: Radix Primitives acordeon, react-feather, react-focus-lock, react-markdown, react-remove-scroll.
+
+Nuevas API que he aprendido: portales createPortal de React-dom
 
 Página web: https://multipage-form-caty.netlify.app
