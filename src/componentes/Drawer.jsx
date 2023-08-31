@@ -4,6 +4,7 @@ import FocusLock from "react-focus-lock";
 import { RemoveScroll } from "react-remove-scroll";
 import { X as Cerrar } from "react-feather";
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
 
 export default function Drawer({ children, handleCerrarMenu }) {
   useEffect(() => {
@@ -25,7 +26,7 @@ export default function Drawer({ children, handleCerrarMenu }) {
     };
   }, [handleCerrarMenu]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  return (
+  return createPortal(
     <div className="drawer-container">
       <div className="drawer-fondo" onClick={handleCerrarMenu} />
       <FocusLock>
@@ -38,6 +39,7 @@ export default function Drawer({ children, handleCerrarMenu }) {
           </div>
         </RemoveScroll>
       </FocusLock>
-    </div>
+    </div>,
+    document.querySelector("#drawer")
   );
 }

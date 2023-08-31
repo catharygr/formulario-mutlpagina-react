@@ -4,6 +4,7 @@ import FocusLock from "react-focus-lock";
 import { RemoveScroll } from "react-remove-scroll";
 import { X as Cerrar } from "react-feather";
 import { useEffect } from "react";
+import { createPortal } from "react-dom";
 
 export default function OfertaModal({ children, handleCerrarMenu }) {
   useEffect(() => {
@@ -25,7 +26,7 @@ export default function OfertaModal({ children, handleCerrarMenu }) {
     };
   }, [handleCerrarMenu]); // eslint-disable-line react-hooks/exhaustive-deps
 
-  return (
+  return createPortal(
     <div className="oferta-modal-container">
       <div
         className="oferta-modal-fondo"
@@ -44,6 +45,7 @@ export default function OfertaModal({ children, handleCerrarMenu }) {
           </div>
         </RemoveScroll>
       </FocusLock>
-    </div>
+    </div>,
+    document.querySelector("#oferta-modal")
   );
 }
